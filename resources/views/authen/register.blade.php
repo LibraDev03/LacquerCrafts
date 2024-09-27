@@ -1,4 +1,4 @@
-@extends('layouts.client')
+@extends('layouts..client.client')
 @section('title', 'LacquerCrafts Register')
 @section('main')
         <!-- Page Title/Header Start -->
@@ -34,22 +34,39 @@
                         <div class="login-register-form">
                             <form action="" method="POST">
                                 @csrf
+                                @if (Session::has('fail'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <p style="text-align: center" >{{ Session::get('fail') }}</p>
+                                    </div>
+                                @endif
                                 <div class="row learts-mb-n50">
                                     <div class="col-12 learts-mb-20">
                                         <label for="name">Họ tên đầy đủ của bạn<abbr class="required">*</abbr></label>
                                         <input type="text" id="name" name="name" required>
+                                        @error('name')
+                                            <small style="color: red;" >{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="col-12 learts-mb-20">
                                         <label for="registerEmail">Địa chỉ Email của bạn<abbr class="required">*</abbr></label>
                                         <input type="email" id="registerEmail" name="email" required>
+                                        @error('email')
+                                            <small style="color: red;" >{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="col-12 learts-mb-20">
                                         <label for="password">Mật khẩu của bạn<abbr class="required">*</abbr></label>
                                         <input type="password" id="password" name="password" required>
+                                        @error('password')
+                                            <small style="color: red;" >{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="col-12 learts-mb-20">
                                         <label for="confirm_password">Xác nhận lại mật khẩu của bạn<abbr class="required">*</abbr></label>
                                         <input type="password" id="confirm_password" name="confirm_password" required>
+                                        @error('confirm_password')
+                                            <small style="color: red;" >{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="row learts-mb-20">
                                         <!-- Cột Số điện thoại -->
@@ -57,6 +74,9 @@
                                             <div class="form-group">
                                                 <label for="phone">Số điện thoại <abbr class="required">*</abbr></label>
                                                 <input type="text" id="phone" class="form-control shadow-none" placeholder="Nhập số điện thoại" required name="phone">
+                                                @error('phone')
+                                                    <small style="color: red;" >{{ $message }}</small>
+                                                @enderror
                                             </div>
                                         </div>
                                     
@@ -70,14 +90,20 @@
                                                     <option value="nu">Nữ</option>
                                                     <option value="khac">Khác</option>
                                                 </select>
+                                                @error('gender')
+                                                    <small style="color: red;" >{{ $message }}</small>
+                                                @enderror
                                             </div>
                                         </div>
                                     
                                         <!-- Cột Ngày sinh -->
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="dob">Ngày sinh <abbr class="required">*</abbr></label>
-                                                <input type="date" id="dob" class="form-control shadow-none" required name="birthday">
+                                                <label for="birthday">Ngày sinh <abbr class="required">*</abbr></label>
+                                                <input type="date" id="birthday" class="form-control shadow-none" required name="birthday">
+                                                @error('birthday')
+                                                    <small style="color: red;" >{{ $message }}</small>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>

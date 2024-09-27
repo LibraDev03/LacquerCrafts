@@ -1,4 +1,4 @@
-@extends('layouts.client')
+@extends('layouts.client.client')
 @section('title', 'LacquerCrafts Login')
 @section('main')
         <!-- Page Title/Header Start -->
@@ -34,14 +34,25 @@
                             <div class="login-register-form">
                                 <form action="" method="POST">
                                     @csrf
+                                    @if (Session::has('fail'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <p style="text-align: center" >{{ Session::get('fail') }}</p>
+                                    </div>
+                                    @endif
                                     <div class="row learts-mb-n50">
                                         <div class="col-12 learts-mb-20">
                                             <label for="registerEmail">Địa chỉ Email của bạn<abbr class="required">*</abbr></label>
                                             <input type="email" id="registerEmail" name="email">
+                                            @error('email')
+                                                <small style="color: red;" >{{ $message }}</small>
+                                            @enderror
                                         </div>
                                         <div class="col-12 learts-mb-20">
                                             <label for="password">Mật khẩu của bạn<abbr class="required">*</abbr></label>
                                             <input type="password" id="password" name="password">
+                                            @error('password')
+                                                <small style="color: red;" >{{ $message }}</small>
+                                            @enderror
                                         </div>
                                         <div class="col-12 text-center learts-mb-50">
                                             <div class="d-flex justify-content-between">

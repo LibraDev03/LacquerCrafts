@@ -1,4 +1,4 @@
-@extends('layouts.client')
+@extends('layouts.client.client')
 @section('title', 'LacquerCrafts Home')
 @section('main')
         <!-- Slider main container Start -->

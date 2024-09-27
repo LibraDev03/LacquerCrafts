@@ -1,4 +1,4 @@
-@extends('layouts.client')
+@extends('layouts.client.client')
 @section('title', 'LacquerCrafts Contact')
 @section('main')
         <!-- Page Title/Header Start -->

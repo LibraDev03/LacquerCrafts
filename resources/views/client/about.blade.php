@@ -1,4 +1,4 @@
-@extends('layouts.client')
+@extends('layouts.client.client')
 @section('title', 'LacquerCrafts About')
 
 @section('main')
