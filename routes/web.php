@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Authen\AuthController;
 use App\Http\Controllers\Client\ClientController;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +49,12 @@ Route::group(['prefix' => 'authen'], function() {
 
 Route::group(['prefix' =>'admin'], function() {
     Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
+    Route::resources([
+        'user' => UserController::class,
+        'category'=> CategoryController::class,
+        'product'=> ProductController::class
+    ]);
 });
 
 Route::group(['prefix' => 'client'], function() {

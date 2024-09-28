@@ -31,7 +31,7 @@ class AuthController extends Controller
         // dd($data);
 
         if($acc = User::create($data)){
-            // Mail::to($acc->email)->send(new VerifyAccount($acc));
+            Mail::to($acc->email)->send(new VerifyAccount($acc));
             // dd('oke');
 
             return redirect()->route('authen.login');

@@ -171,54 +171,8 @@
                                     </li>
                                 </ul>
                             </li> --}}
-                            <li class="has-children"><a href="{{route('client.blog')}}"><span class="menu-text">bài viết</span></a>
-                                <ul class="sub-menu">
-                                    <li class="has-children"><a href="blog-right-sidebar.html"><span class="menu-text">Standard Layout</span></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-right-sidebar.html"><span class="menu-text">Right Sidebar</span></a></li>
-                                            <li><a href="blog-left-sidebar.html"><span class="menu-text">Left Sidebar</span></a></li>
-                                            <li><a href="blog-fullwidth.html"><span class="menu-text">Full Width</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-children"><a href="blog-grid-right-sidebar.html"><span class="menu-text">Grid Layout</span></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-grid-right-sidebar.html"><span class="menu-text">Right Sidebar</span></a></li>
-                                            <li><a href="blog-grid-left-sidebar.html"><span class="menu-text">Left Sidebar</span></a></li>
-                                            <li><a href="blog-grid-fullwidth.html"><span class="menu-text">Full Width</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-children"><a href="blog-list-right-sidebar.html"><span class="menu-text">List Layout</span></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-list-right-sidebar.html"><span class="menu-text">Right Sidebar</span></a></li>
-                                            <li><a href="blog-list-left-sidebar.html"><span class="menu-text">Left Sidebar</span></a></li>
-                                            <li><a href="blog-list-fullwidth.html"><span class="menu-text">Full Width</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-children"><a href="blog-masonry-right-sidebar.html"><span class="menu-text">Masonry Layout</span></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-masonry-right-sidebar.html"><span class="menu-text">Right Sidebar</span></a></li>
-                                            <li><a href="blog-masonry-left-sidebar.html"><span class="menu-text">Left Sidebar</span></a></li>
-                                            <li><a href="blog-masonry-fullwidth.html"><span class="menu-text">Full Width</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-children"><a href="blog-details-right-sidebar.html"><span class="menu-text">Single Post Layout</span></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-details-right-sidebar.html"><span class="menu-text">Right Sidebar</span></a></li>
-                                            <li><a href="blog-details-left-sidebar.html"><span class="menu-text">Left Sidebar</span></a></li>
-                                            <li><a href="blog-details-fullwidth.html"><span class="menu-text">Full Width</span></a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-children"><a href="{{route('client.about')}}"><span class="menu-text">Về chúng tôi</span></a>
-                                <ul class="sub-menu">
-                                    <li><a href="about-us.html"><span class="menu-text">About us</span></a></li>
-                                    <li><a href="about-us-2.html"><span class="menu-text">About us 02</span></a></li>
-                                    <li><a href="contact-us.html"><span class="menu-text">Contact us</span></a></li>
-                                    <li><a href="coming-soon.html"><span class="menu-text">Coming Soon</span></a></li>
-                                    <li><a href="404.html"><span class="menu-text">Page 404</span></a></li>
-                                </ul>
-                            </li>
+                            <li class=""><a href="{{route('client.blog')}}"><span class="menu-text">bài viết</span></a></li>
+                            <li class=""><a href="{{route('client.about')}}"><span class="menu-text">Về chúng tôi</span></a></li>
                             <li class="has-children"><a href="{{route('client.contact')}}"><span class="menu-text">Liên lạc</span></a>
                                 <ul class="sub-menu">
                                     <li><a href="about-us.html"><span class="menu-text">About us</span></a></li>
