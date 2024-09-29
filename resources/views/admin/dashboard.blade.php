@@ -24,8 +24,8 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                <h3>150</h3>
-                <p>Đơn hàng mới</p>
+                  <p style="text-align: center">Đơn hàng mới</p>
+                  <h3 style="text-align: center">20</h3>
                 </div>
                 <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -38,14 +38,13 @@
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Số người dùng</p>
+                <p style="text-align: center">Số lượng người dùng</p>
+                <h3 style="text-align: center">{{ $user->count()}}<sup style="font-size: 20px"></sup></h3>
                 </div>
                 <div class="icon">
                 <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#" class="small-box-footer">Nhiều thông tin hơn<i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('user.index')}}" class="small-box-footer">Nhiều thông tin hơn<i class="fas fa-arrow-circle-right"></i></a>
             </div>
             </div>
             <!-- ./col -->
@@ -53,14 +52,13 @@
             <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner">
-                <h3>44</h3>
-
-                <p>Số lượng danh mục sản phẩm</p>
+                <p style="text-align: center">Số lượng danh mục sản phẩm</p>
+                <h3 style="text-align: center">{{ $category->count()}}</h3>
                 </div>
                 <div class="icon">
                 <i class="ion ion-person-add"></i>
                 </div>
-                <a href="#" class="small-box-footer">Nhiều thông tin hơn<i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('category.index')}}" class="small-box-footer">Nhiều thông tin hơn<i class="fas fa-arrow-circle-right"></i></a>
             </div>
             </div>
             <!-- ./col -->
@@ -68,14 +66,13 @@
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                <h3>65</h3>
-
-                <p>Tổng số sản phâmr</p>
+                <p style="text-align: center">Tổng số sản phẩm</p>
+                <h3 style="text-align: center">{{ $product->count()}}</h3>
                 </div>
                 <div class="icon">
                 <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="#" class="small-box-footer">Nhiều thông tin hơn<i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('product.index')}}" class="small-box-footer">Nhiều thông tin hơn<i class="fas fa-arrow-circle-right"></i></a>
             </div>
             </div>
             <!-- ./col -->

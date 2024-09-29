@@ -1,18 +1,20 @@
 @extends('layouts.admin.index')
 
 @section('main')
-    <div class="d-flex"><a href="{{ route('product.create') }}" class="btn btn-dark mx-auto m-3 ">Create New User</a></div>
+    <div class="d-flex"><a href="{{ route('product.create') }}" class="btn btn-dark mx-auto m-3 ">Tạo mới sản phẩm</a></div>
     <div class="container">
         <table class="table table-bordered">
         <thead>
             <tr>
             <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">category_id</th>
-            <th scope="col">price</th>
-            <th scope="col" class="description-column">description</th>
-            <th scope="col">image</th>
-            <th scope="col">Action</th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Tên danh mục</th>
+            <th scope="col">Khối lượng</th>
+            <th scope="col">Kích thước</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Hình ảnh</th>
+            <th scope="col" class="description-column">Mô tả</th>
+            <th scope="col">Hành động</th>
             </tr>
         </thead>
         <tbody>
@@ -21,9 +23,11 @@
                 <th scope="row">{{ $product->id }}</th>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->cat->name }}</td>
+                <td>{{ $product->weight }}</td>
+                <td>{{ $product->dimensions }}</td>
                 <td>${{ $product->price }}</td>
+                <td><img src="{{ asset('assets/images/product/' . $product->image) }}" alt="" width="50px"></td>
                 <td class="description-column">{{ $product->description }}</td>
-                <td><img src="{{ asset('assets/img/product/' . $product->image) }}" alt="" width="50px"></td>
                 <td>
                 <a href="{{ route('product.edit', $product->id) }}" class="btn btn-dark">Edit</a>
                 <form action="{{ route('product.destroy', $product->id) }}" method="POST" style="display:inline;" onsubmit=" return confirm('Are you sure')">
@@ -39,8 +43,8 @@
     </div>
     <style>
         .description-column {
-            width: 400px;
-            height: 100px;
+            width: 100px;
+            height: auto;
             overflow: hidden; /* Ẩn phần nội dung tràn */
             text-overflow: ellipsis; /* Hiển thị dấu ba chấm nếu nội dung quá dài */
         }
