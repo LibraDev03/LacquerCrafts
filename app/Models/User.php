@@ -24,7 +24,8 @@ class User extends Authenticatable
         'confirm_password',
         'phone',
         'gender',
-        'birthday'
+        'birthday',
+        'address'
     ];
 
     /**

@@ -12,6 +12,7 @@
         <th scope="col">Số điện thoại</th>
         <th scope="col">Giới tính</th>
         <th scope="col">Ngày sinh</th>
+        <th scope="col">Địa chỉ</th>
         <th scope="col">Hành động</th>
       </tr>
     </thead>
@@ -24,6 +25,7 @@
           <td>{{ $user->phone }}</td>
           <td>{{ $user->gender }}</td>
           <td>{{ $user->birthday }}</td>
+          <td class="description-column">{{ $user->address }}</td>
           <td>
             <a href="{{ route('user.edit', $user->id) }}" class="btn btn-dark">Sửa </a>
             <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display:inline;" onsubmit=" return confirm('Are you sure')">
@@ -37,5 +39,13 @@
       
     </tbody>
   </table>
+  <style>
+    .description-column {
+        width: 100px;
+        height: auto;
+        overflow: hidden; /* Ẩn phần nội dung tràn */
+        text-overflow: ellipsis; /* Hiển thị dấu ba chấm nếu nội dung quá dài */
+    }
+</style>
 </div>
 @endsection

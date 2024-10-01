@@ -41,33 +41,53 @@
                                 @endif
                                 <div class="row learts-mb-n50">
                                     <div class="col-12 learts-mb-20">
-                                        <label for="name">Họ tên đầy đủ của bạn<abbr class="required">*</abbr></label>
-                                        <input type="text" id="name" name="name" required>
-                                        @error('name')
-                                            <small style="color: red;" >{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="col-12 learts-mb-20">
                                         <label for="registerEmail">Địa chỉ Email của bạn<abbr class="required">*</abbr></label>
                                         <input type="email" id="registerEmail" name="email" required>
                                         @error('email')
                                             <small style="color: red;" >{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="col-12 learts-mb-20">
-                                        <label for="password">Mật khẩu của bạn<abbr class="required">*</abbr></label>
-                                        <input type="password" id="password" name="password" required>
-                                        @error('password')
-                                            <small style="color: red;" >{{ $message }}</small>
-                                        @enderror
+                                    <div class="row learts-mb-20">
+                                        <div class="col-md-6">
+                                            <label for="password">Mật khẩu của bạn<abbr class="required">*</abbr></label>
+                                            <input type="password" id="password" name="password" class="form-control shadow-none" required>
+                                            @error('password')
+                                                <small style="color: red;">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="confirm_password">Xác nhận lại mật khẩu của bạn<abbr class="required">*</abbr></label>
+                                            <input type="password" id="confirm_password" name="confirm_password" class="form-control shadow-none" required>
+                                            @error('confirm_password')
+                                                <small style="color: red;">{{ $message }}</small>
+                                            @enderror
+                                        </div>
                                     </div>
-                                    <div class="col-12 learts-mb-20">
-                                        <label for="confirm_password">Xác nhận lại mật khẩu của bạn<abbr class="required">*</abbr></label>
-                                        <input type="password" id="confirm_password" name="confirm_password" required>
-                                        @error('confirm_password')
-                                            <small style="color: red;" >{{ $message }}</small>
-                                        @enderror
+                                    
+                                    <div class="row learts-mb-20">
+                                        <!-- Cột Họ tên -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="name">Họ tên đầy đủ của bạn <abbr class="required">*</abbr></label>
+                                                <input type="text" id="name" name="name" class="form-control shadow-none" required>
+                                                @error('name')
+                                                    <small style="color: red;">{{ $message }}</small>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Cột Địa chỉ -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="address">Địa chỉ của bạn <abbr class="required">*</abbr></label>
+                                                <input type="text" id="address" name="address" class="form-control shadow-none" required>
+                                                @error('address')
+                                                    <small style="color: red;">{{ $message }}</small>
+                                                @enderror
+                                            </div>
+                                        </div>
                                     </div>
+                                    
                                     <div class="row learts-mb-20">
                                         <!-- Cột Số điện thoại -->
                                         <div class="col-md-4">

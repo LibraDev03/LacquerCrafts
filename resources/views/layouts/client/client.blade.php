@@ -44,6 +44,9 @@
     <link rel="stylesheet" href="{{asset('assets/css/plugins/plugins.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
 
+    {{-- toast cdn cho he thong --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" integrity="sha512-wJgJNTBBkLit7ymC6vvzM1EcSWeM9mmOu+1USHaRBbHkm6W9EgM0HY27+UtUaprntaYQJF75rc8gjxllKs5OIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -203,11 +206,11 @@
                     <div class="header-tools justify-content-end">
                         @if (Auth::check())
                         <div class="header-login">
-                            <a href="my-account.html"><i class="far fa-user"></i></a>
+                            <a href="{{route('authen.profile')}}"><i class="far fa-user"></i></a>
                             <div class="dropdown-menu">
                                 <ul>
-                                    <li><a href="">Cá nhân</a></li>
-                                    <li><a href="{{route('authen.register')}}">Đăng kí</a></li>
+                                    <li><a href="{{route('authen.profile')}}">Cá nhân</a></li>
+                                    {{-- <li><a href="{{route('authen.register')}}">Đăng kí</a></li> --}}
                                     <li><a href="{{route('authen.logout')}}">Đăng xuất </a></li>
                                 </ul>
                             </div>
@@ -224,7 +227,7 @@
                         </div>
                         @else    
                             <div class="header-login me-5">
-                                <a href="my-account.html"><i class="far fa-user"></i></a>
+                                <a href="{{route('authen.login')}}"><i class="far fa-user"></i></a>
                                 <div class="dropdown-menu">
                                     <ul>
                                         <li><a href="{{route('authen.register')}}">Đăng kí</a></li>
@@ -1294,6 +1297,35 @@
 
     <!-- Main Activation JS -->
     <script src="{{asset('assets/js/main.js')}}"></script>
+
+    {{-- toast cho he thong --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
+
+    @if (Session::has('suc'))
+       <script>
+            $.toast({
+                heading: 'Thông báo tới bạn !!!',
+                text : '{{session::get('suc')}}',
+                showHideTransition: 'slide',
+                position: 'top-right',
+                hideAfter: 3000,
+                icon: 'success'
+            })
+        </script>
+    @endif
+    
+    @if (Session::has('fail'))
+        <script>
+            $.toast({
+                heading: 'Thông báo tới bạn !!!',  
+                text : '{{session::get('fail')}}',
+                showHideTransition: 'slide',
+                position: 'top-right',
+                hideAfter: 3000,
+                icon: 'error'
+            })
+        </script>
+    @endif
 
 </body>
 

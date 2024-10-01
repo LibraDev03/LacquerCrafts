@@ -21,11 +21,12 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|max:100',
             'confirm_password' => 'required|same:password',
+            'address' => 'required',
             'phone' => 'required|max:15',
             'gender' => 'required',
             'birthday' => 'required',
         ]);
-        $data = request()->only('name','email','password','phone','gender','birthday');
+        $data = request()->only('name','email','password','phone','gender','birthday','address');
         $data['password'] = bcrypt(request('password')); 
 
         // dd($data);
@@ -34,10 +35,10 @@ class AuthController extends Controller
             Mail::to($acc->email)->send(new VerifyAccount($acc));
             // dd('oke');
 
-            return redirect()->route('authen.login');
+            return redirect()->route('authen.login')->with('suc', 'Đăng kí tài khoản thành công');
         }else {
 
-            return redirect()->back()->with('fail', 'Email của bạn đã bị trùng');
+            return redirect()->back()->with('fail', 'Trùng thông tin đăng kí');
         }
         
     }
@@ -56,7 +57,7 @@ class AuthController extends Controller
 
     //    dd($data);
        if(auth()->attempt($data)){
-           return redirect()->route('client.home');
+           return redirect()->route('client.home')->with('suc', 'Đăng nhập thành công');
        }else{
             return redirect()->back()->with('fail', 'Sai Tài khoản hoặc mật khẩu');
        }
@@ -66,11 +67,12 @@ class AuthController extends Controller
 
     public function logout() {
         Auth::logout();
-        return redirect()->route('authen.login');
+        return redirect()->route('authen.login')->with('suc', 'Đăng xuất thành công');
     }
 
     public function profile(){
-
+        $authen = auth()->user();
+        return view('authen.profile',compact('authen'));
     }
 
     public function check_profile(){

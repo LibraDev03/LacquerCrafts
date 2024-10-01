@@ -49,22 +49,24 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="gender">Giới tính</label>
-                <select class="form-control" id="gender" name="gender" required>
-                    <option value="" disabled selected>Chọn giới tính</option>
-                    <option value="nam">Nam</option>
-                    <option value="nu">Nữ</option>
-                    <option value="khac">Khác</option>
+                <select id="gender" class="form-control shadow-none" style="border-radius: 0;" required name="gender">
+                    <option value="">Chọn giới tính</option>
+                    <option value="nam" {{ $user->gender == 'nam' ? 'selected' : '' }}>Nam</option>
+                    <option value="nu" {{ $user->gender == 'nu' ? 'selected' : '' }}>Nữ</option>
+                    <option value="khac" {{ $user->gender == 'khac' ? 'selected' : '' }}>Khác</option>
                 </select>
                 @error('gender')
                     <small style="color: red;">{{ $message }}</small>
                 @enderror
             </div>
-            <div class="form-group col-md-4">
-                <label for="birthday">Ngày sinh</label>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="{{ old('birthday', $user->birthday) }}" required>
-                @error('birthday')
-                    <small style="color: red;">{{ $message }}</small>
-                @enderror
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="birthday">Ngày sinh <abbr class="required">*</abbr></label>
+                    <input type="date" id="birthday" class="form-control shadow-none" required name="birthday" value="{{ $user->birthday }}">
+                    @error('birthday')
+                        <small style="color: red;">{{ $message }}</small>
+                    @enderror
+                </div>
             </div>
         </div>
     
