@@ -37,7 +37,7 @@ class CategoryController extends Controller
         ]);
 
         Category::create($data);
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('suc', 'Thêm mới danh mục thành công');
     }
 
     /**
@@ -73,7 +73,7 @@ class CategoryController extends Controller
             'description' => $data['description']
         ]);
 
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('suc', 'Sửa danh mục thành công');
     }
 
     /**
@@ -83,6 +83,6 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category->delete();
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('suc', 'Xóa danh mục thành công');
     }
 }

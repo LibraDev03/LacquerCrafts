@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use PhpParser\Node\Expr\Cast\String_;
 
 class AuthController extends Controller
 {

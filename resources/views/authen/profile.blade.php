@@ -1,5 +1,4 @@
-@extends('layouts.client.client')
-@section('main')
+
 @extends('layouts..client.client')
 @section('title', 'LacquerCrafts Register')
 @section('main')
@@ -12,7 +11,7 @@
                         <div class="page-title">
                             <h1 class="title">Hồ sơ của bạn</h1>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('client.home')}}">Trang chủ</a></li>
                                 <li class="breadcrumb-item active">Hồ sơ của bạn</li>
                             </ul>
                         </div>
@@ -47,7 +46,7 @@
                                     <div class="col-12 learts-mb-20">
                                         <label for="name">Địa chỉ của bạn<abbr class="required">*</abbr></label>
                                         <input type="text" id="name" name="address" required placeholder="{{ $authen->address}}">
-                                        @error('name')
+                                        @error('address')
                                             <small style="color: red;" >{{ $message }}</small>
                                         @enderror
                                     </div>
@@ -151,5 +150,4 @@
 
     </div>
         <!-- Register Section End -->
-@endsection
 @endsection

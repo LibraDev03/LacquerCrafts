@@ -58,7 +58,7 @@ class ProductController extends Controller
 
         Product::create($data);
 
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('suc', 'Thêm mới sản phẩm thành công');
 
    
 
@@ -119,9 +119,9 @@ class ProductController extends Controller
         }
 
         if($product->update($data)) {
-            return redirect()->route('product.index');
+            return redirect()->route('product.index')->with('suc', 'sửa sản phẩm thành công');
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('fail', 'Sửa sản phẩm không thành công');
         }
     
     }
@@ -148,7 +148,7 @@ class ProductController extends Controller
         $product->delete();
 
         // Chuyển hướng về trang danh sách sản phẩm
-        return redirect()->route('product.index')->with('success', 'Product deleted successfully!');
+        return redirect()->route('product.index')->with('suc', 'Xóa sản phẩm thành công');
     }
 
 }

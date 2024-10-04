@@ -40,8 +40,9 @@ class UserController extends Controller
             'phone' => 'required|unique:users',
             'gender' => 'required',
             'birthday' => 'required',
+            'address' => 'required'
         ]);
-        $data = $request->only('name','email','phone','gender','birthday');
+        $data = $request->only('name','email','phone','gender','birthday', 'address');
         $data['password'] = bcrypt(request('password'));
 
         // dd($data);
@@ -51,10 +52,10 @@ class UserController extends Controller
 
             // dd('oke');
 
-            return redirect()->route('user.index');
+            return redirect()->route('user.index')->with('suc', 'Thêm mới người dùng thành công');
         }else {
 
-            return redirect()->back();
+            return redirect()->back()->with('fail', 'Thêm mới người dùng không thành công');
         }
     }
 
@@ -100,7 +101,7 @@ class UserController extends Controller
             'password' => !empty($data['password']) ? bcrypt($data['password']) : $user->password
         ]);
 
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('suc', 'Sửa người dùng thành công');
     }
 
     /**
@@ -110,6 +111,6 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('suc', 'Xóa người dùng thành công');
     }
 }

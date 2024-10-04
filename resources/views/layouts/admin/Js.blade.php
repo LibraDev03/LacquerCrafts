@@ -31,3 +31,32 @@
 <script src="{{asset('adminDb/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('adminDb/dist/js/pages/dashboard.js')}}"></script>
+
+{{-- toast cho he thong --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
+
+@if (Session::has('suc'))
+<script>
+     $.toast({
+         heading: 'Thông báo tới bạn !!!',
+         text : '{{session::get('suc')}}',
+         showHideTransition: 'slide',
+         position: 'top-right',
+         hideAfter: 3000,
+         icon: 'success'
+     })
+ </script>
+@endif
+
+@if (Session::has('fail'))
+ <script>
+     $.toast({
+         heading: 'Thông báo tới bạn !!!',  
+         text : '{{session::get('fail')}}',
+         showHideTransition: 'slide',
+         position: 'top-right',
+         hideAfter: 3000,
+         icon: 'error'
+     })
+ </script>
+@endif

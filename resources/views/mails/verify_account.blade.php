@@ -9,16 +9,12 @@
 
         <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
             <tr>
-                <td style="padding: 10px; background-color: #f2f2f2; font-weight: bold;">Họ tên:</td>
-                <td style="padding: 10px; background-color: #f9f9f9;">{{ $account->name }}</td>
-            </tr>
-            <tr>
                 <td style="padding: 10px; background-color: #f2f2f2; font-weight: bold;">Email:</td>
                 <td style="padding: 10px; background-color: #f9f9f9;">{{ $account->email }}</td>
             </tr>
             <tr>
-                <td style="padding: 10px; background-color: #f2f2f2; font-weight: bold;">Số điện thoại:</td>
-                <td style="padding: 10px; background-color: #f9f9f9;">{{ $account->phone }}</td>
+                <td style="padding: 10px; background-color: #f2f2f2; font-weight: bold;">Họ tên:</td>
+                <td style="padding: 10px; background-color: #f9f9f9;">{{ $account->name }}</td>
             </tr>
             <tr>
                 <td style="padding: 10px; background-color: #f2f2f2; font-weight: bold;">Giới tính:</td>
@@ -27,6 +23,14 @@
             <tr>
                 <td style="padding: 10px; background-color: #f2f2f2; font-weight: bold;">Ngày sinh:</td>
                 <td style="padding: 10px; background-color: #f9f9f9;">{{ $account->birthday }}</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; background-color: #f2f2f2; font-weight: bold;">Số điện thoại:</td>
+                <td style="padding: 10px; background-color: #f9f9f9;">{{ $account->phone }}</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; background-color: #f2f2f2; font-weight: bold;">Địa chỉ:</td>
+                <td style="padding: 10px; background-color: #f9f9f9;">{{ $account->address }}</td>
             </tr>
         </table>
 

@@ -33,6 +33,9 @@
                 @enderror
             </div>
         </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="address" name="address" required placeholder="Địa chỉ của bạn">
+        </div>
     
         <!-- Thêm trường số điện thoại, giới tính và ngày sinh như yêu cầu trước đó -->
         <div class="form-row">
