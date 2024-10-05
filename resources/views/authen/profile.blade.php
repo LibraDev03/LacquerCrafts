@@ -33,7 +33,7 @@
                             <p class="desc">Sửa đổi hồ sơ của bạn để có những trải nghiệm tốt hơn</p>
                         </div>
                         <div class="login-register-form">
-                            <form action="" method="POST">
+                            <form action="{{route('authen.profile')}}" method="POST">
                                 @csrf
                                 <div class="row learts-mb-n50">
                                     <div class="col-12 learts-mb-20">
@@ -111,7 +111,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row learts-mb-20">
+                                    {{-- <div class="row learts-mb-20">
                                         <div class="col-md-6">
                                             <label for="password">Xác nhận mật khẩu của bạn<abbr class="required">*</abbr></label>
                                             <input type="password" id="password" name="password" class="form-control shadow-none" required>
@@ -126,7 +126,7 @@
                                                 <small style="color: red;">{{ $message }}</small>
                                             @enderror
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     
                                     <div class="d-flex justify-content-between">
                                         <a href="#" class="text-decoration-none">Bạn bị mất mật khẩu ?</a>

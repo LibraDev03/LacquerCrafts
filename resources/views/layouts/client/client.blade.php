@@ -210,6 +210,7 @@
                             <div class="dropdown-menu">
                                 <ul>
                                     <li><a href="{{route('authen.profile')}}">Cá nhân</a></li>
+                                    <li><a href="{{route('authen.change_password')}}">Đổi mật khẩu</a></li>
                                     {{-- <li><a href="{{route('authen.register')}}">Đăng kí</a></li> --}}
                                     <li><a href="{{route('authen.logout')}}">Đăng xuất </a></li>
                                 </ul>

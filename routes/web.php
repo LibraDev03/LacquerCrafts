@@ -42,7 +42,7 @@ Route::group(['prefix' => 'authen'], function() {
     Route::get('/forgot_password',[AuthController::class, 'forgot_password'])->name('authen.forgot_password');
     Route::post('/forgot_password',[AuthController::class, 'check_forgot_password']);
 
-    Route::get('/reset_password',[AuthController::class, 'reset_password'])->name('authen.change_password');
+    Route::get('/reset_password',[AuthController::class, 'reset_password'])->name('authen.reset_password');
     Route::post('/reset_password',[AuthController::class, 'check_reset_password']);
 
 });

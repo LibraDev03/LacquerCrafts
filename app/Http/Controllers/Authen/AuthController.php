@@ -7,6 +7,7 @@ use App\Mail\VerifyAccount;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use PhpParser\Node\Expr\Cast\String_;
 
@@ -77,19 +78,54 @@ class AuthController extends Controller
     }
 
     public function check_profile(){
+        $data = request()->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'gender' => 'required',
+            'birthday' => 'required',
+            'address' => 'required'
+            
+        ]);
 
+        // dd($data);
+
+        $user = User::findOrFail(auth()->user()->id);
+        $user->update([
+            'name' => $data['name'],
+            'phone' => $data['phone'],
+            'gender' => $data['gender'],
+            'birthday' => $data['birthday'],
+            'address' => $data['address'],
+        ]);
+
+        return redirect()->route('authen.profile')->with('suc', 'Sửa thông tin thành công');
     }
 
     public function change_password(){
-
+        return view('authen.change_password');
     }
 
     public function check_change_password(){
+        $data = request()->validate([
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'confirm_password' => 'required|same:new_password'
+        ]);
+
+        if(Hash::check($data['old_password'], auth()->user()->password)){
+            $user = User::findOrFail(auth()->user()->id);
+            $user->password = Hash::make($data['new_password']);
+            $user->save();
+
+            return redirect()->route('authen.login')->with('suc', 'Thay đổi mật khẩu thành công');
+        }else{
+            return redirect()->back()->with('fail','Thay đổi mật khẩu thất bại');
+        }
 
     }
 
     public function forgot_password(){
-
+        
     }
 
     public function check_forgot_password(){
