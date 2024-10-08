@@ -9,18 +9,17 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class VerifyAccount extends Mailable
+class change_password extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public $account;
-
-    public function __construct($acc)
+    public $change_password;
+    public function __construct($chang)
     {
-        $this->account = $acc;
+        $this->change_password = $chang;
     }
 
     /**
@@ -29,7 +28,7 @@ class VerifyAccount extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Xác thực đăng kí tài khoản',
+            subject: 'Thay đổi mật khẩu',
         );
     }
 
@@ -39,7 +38,7 @@ class VerifyAccount extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mails.verify_account',
+            view: 'mails.change_password',
         );
     }
 

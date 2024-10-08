@@ -37,6 +37,7 @@ class ProductController extends Controller
         'name' => 'required|unique:products,name',
         'slug'=> 'nullable',
         'price' => 'required|numeric',
+        'discount' => 'required|numeric',
         'weight' => 'nullable',
         'dimensions' => 'nullable',
         'description' => 'required|max:500',
@@ -44,7 +45,7 @@ class ProductController extends Controller
         'image' => 'required|mimes:jpg,jpeg,png,gif,webp'
         ]);
 
-        $data = $request->only('name','price','weight','dimensions','description','category_id');
+        $data = $request->only('name','discount','price','weight','dimensions','description','category_id');
 
         // Tạo slug từ tên sản phẩm
         $data['slug'] = Str::slug($request->name);
@@ -89,17 +90,18 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $data = $request->validate([
-            'name' => 'required|unique:products,name',
+            'name' => 'nullable|unique:products,name',
             'slug'=> 'nullable',
-            'price' => 'required|numeric',
+            'price' => 'nullable|numeric',
+            'discount' => 'nullable|numeric',
             'weight' => 'nullable',
             'dimensions' => 'nullable',
-            'description' => 'required|max:500',
-            'category_id' => 'required|exists:categories,id',
+            'description' => 'nullable|max:500',
+            'category_id' => 'nullable|exists:categories,id',
             'image' => 'nullable|mimes:jpg,jpeg,png,gif,webp'
         ]);
 
-        $data = $request->only('name','price','weight','dimensions','description','category_id');
+        $data = $request->only('name','discount','price','weight','dimensions','description','category_id');
 
         if ($request->hasFile('image')) {
             // Xóa ảnh cũ nếu có

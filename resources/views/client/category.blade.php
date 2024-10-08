@@ -11,7 +11,8 @@
                         <h1 class="title">Cửa hàng</h1>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('client.home')}}">Trang chủ</a></li>
-                            <li class="breadcrumb-item active">Tất cả sản phẩm</li>
+                            <li class="breadcrumb-item "><a href="{{route('client.shop')}}">Tất cả sản phẩm</a></li>
+                            <li class="breadcrumb-item active">{{$cat->name}}</li>
                         </ul>
                     </div>
 
@@ -21,8 +22,8 @@
     </div>
     <!-- Page Title/Header End -->
 
-    <!-- Shop Products Section Start -->
-    <div class="section section-padding pt-0">
+      <!-- Shop Products Section Start -->
+      <div class="section section-padding pt-0">
 
         <!-- Shop Toolbar Start -->
         <div class="shop-toolbar section-fluid border-bottom">
@@ -166,7 +167,7 @@
 
                             <div class="grid-sizer col-1"></div>
 
-                            @foreach ($all_product as $all_product)
+                            @foreach ($products as $products)
                             <div class="grid-item col featured">
                                 <div class="product">
                                     <div class="product-thumb">
@@ -175,8 +176,8 @@
                                                 <span class="onsale">-27%</span>
                                             <span class="hot">hot</span>
                                             </span>
-                                            <img src="{{asset('assets/images/product/' . $all_product->image)}}" alt="Product Image">
-                                            <img class="image-hover " src="{{asset('assets/images/product/s328/product-8-hover.webp')}}" alt="Product Image">
+                                            <img src="{{asset('assets/images/product/' . $products->image)}}" alt="Product Image">
+                                            <img class="image-hover " src="{{asset('assets/images/product/s328/' )}}" alt="Product Image">
                                         </a>
                                         <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
                                         <div class="product-options">
@@ -193,10 +194,10 @@
                                         </div>
                                     </div>
                                     <div class="product-info">
-                                        <h6 class="title"><a href="product-details.html">{{$all_product->name}}</a></h6>
+                                        <h6 class="title"><a href="product-details.html">{{$products->name}}</a></h6>
                                         <span class="price">
-                                            <span class="old">{{number_format($all_product->price)}} VND</span>
-                                        <span class="new">{{number_format($all_product->discount)}} VND</span>
+                                            <span class="old">{{$products->price}} VND</span>
+                                        <span class="new">{{$products->discount}} VND</span>
                                         </span>
                                         <div class="product-buttons">
                                             <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top" data-hint="Quick View"><i class="fas fa-search"></i></a>
@@ -261,7 +262,7 @@
                                     <div class="content">
                                         <h6 class="title"><a href="product-details.html">{{$new_product->name}}</a></h6>
                                         <span class="price">
-                                            {{number_format($new_product->price)}} VND
+                                           {{number_format($new_product->price)}} VND
                                         </span>
                                         <div class="ratting">
                                             <span class="rate" style="width: 80%;"></span>

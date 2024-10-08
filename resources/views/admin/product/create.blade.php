@@ -28,6 +28,9 @@
                     <input type="text" class="form-control" id="price" name="price" required placeholder="Giá sản phẩm (vnđ)">
                 </div>
                 <div class="form-group col-sm">
+                    <input type="text" class="form-control" id="discount" name="discount" required placeholder="Giá sản phẩm đã giảm (vnđ)">
+                </div>
+                <div class="form-group col-sm">
                     <input type="text" class="form-control" id="weight" name="weight" required placeholder="Khối lượng sản phẩm (kg)">
                 </div>
                 <div class="form-group col-sm">

@@ -72,7 +72,7 @@
                                         </div>
                                         
                                         <div class="col-12 text-center learts-mb-50">
-                                            <button class="btn btn-dark btn-outline-hover-dark">Register</button>
+                                            <button class="btn btn-dark btn-outline-hover-dark">Đăng nhập</button>
                                         </div>
                                     </div>
                                 </form>

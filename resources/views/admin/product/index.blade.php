@@ -12,6 +12,7 @@
             <th scope="col">Khối lượng</th>
             <th scope="col">Kích thước</th>
             <th scope="col">Giá</th>
+            <th scope="col">Giảm giá</th>
             <th scope="col">Hình ảnh</th>
             <th scope="col" class="description-column">Mô tả</th>
             <th scope="col">Hành động</th>
@@ -26,6 +27,7 @@
                 <td>{{ $product->weight }}</td>
                 <td>{{ $product->dimensions }}</td>
                 <td>${{ $product->price }}</td>
+                <td>${{ $product->discount }}</td>
                 <td><img src="{{ asset('assets/images/product/' . $product->image) }}" alt="" width="50px"></td>
                 <td class="description-column">{{ $product->description }}</td>
                 <td>

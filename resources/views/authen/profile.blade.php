@@ -111,22 +111,22 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="row learts-mb-20">
+                                    <div class="row learts-mb-20">
                                         <div class="col-md-6">
-                                            <label for="password">Xác nhận mật khẩu của bạn<abbr class="required">*</abbr></label>
+                                            <label for="confirm_password" style="text-align: center">Xác nhận email của bạn để thay đổi thông tin<abbr class="required">*</abbr></label>
+                                            <input type="email" id="email" name="email" class="form-control shadow-none" required>
+                                            @error('email')
+                                                <small style="color: red;">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="confirm_password" style="text-align: center">Xác nhận mật khẩu của bạn để thay đổi thông tin<abbr class="required">*</abbr></label>
                                             <input type="password" id="password" name="password" class="form-control shadow-none" required>
                                             @error('password')
                                                 <small style="color: red;">{{ $message }}</small>
                                             @enderror
                                         </div>
-                                        <div class="col-md-6">
-                                            <label for="confirm_password">Xác nhận lại mật khẩu của bạn để thay đổi thông tin<abbr class="required">*</abbr></label>
-                                            <input type="password" id="confirm_password" name="confirm_password" class="form-control shadow-none" required>
-                                            @error('confirm_password')
-                                                <small style="color: red;">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                    </div> --}}
+                                    </div>
                                     
                                     <div class="d-flex justify-content-between">
                                         <a href="#" class="text-decoration-none">Bạn bị mất mật khẩu ?</a>

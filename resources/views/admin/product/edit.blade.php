@@ -31,6 +31,9 @@
                     <input type="text" class="form-control" id="price" name="price" value="" required placeholder="{{$products->price}}">
                 </div>
                 <div class="form-group col-sm">
+                    <input type="text" class="form-control" id="discount" name="discount" value="" required placeholder="{{$products->discount}}">
+                </div>
+                <div class="form-group col-sm">
                     <input type="text" class="form-control" id="weight" name="weight" value="" required placeholder="{{$products->weight}}">
                 </div>
                 <div class="form-group col-sm">

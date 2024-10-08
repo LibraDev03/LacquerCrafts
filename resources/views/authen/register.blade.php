@@ -42,7 +42,7 @@
                                 <div class="row learts-mb-n50">
                                     <div class="col-12 learts-mb-20">
                                         <label for="registerEmail">Địa chỉ Email của bạn<abbr class="required">*</abbr></label>
-                                        <input type="email" id="registerEmail" name="email" required>
+                                        <input type="email" id="registerEmail" name="email" required placeholder="Tại đây hãy sử dụng chính xác email của bạn">
                                         @error('email')
                                             <small style="color: red;" >{{ $message }}</small>
                                         @enderror

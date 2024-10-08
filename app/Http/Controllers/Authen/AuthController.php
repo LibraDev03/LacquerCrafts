@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Authen;
 
 use App\Http\Controllers\Controller;
+use App\Mail\change_password;
+use App\Mail\Profile;
 use App\Mail\VerifyAccount;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -83,23 +85,42 @@ class AuthController extends Controller
             'phone' => 'required',
             'gender' => 'required',
             'birthday' => 'required',
-            'address' => 'required'
-            
+            'address' => 'required',
+            'password' => ['required', function($attr, $value, $fail) {
+                if (!Hash::check($value, auth()->user()->password)) {
+                    return $fail('Mật khẩu của bạn không đúng để thay đổi hồ sơ');
+                }
+            }],
+            'email' => ['required','email','unique:users,email,' . auth()->user()->id,
+                function($attr, $value, $fail) {
+                    if ($value !== auth()->user()->email) {
+                        return $fail('Email của bạn không đúng để thay đổi hồ sơ');
+                    }
+                }
+            ]
         ]);
-
-        // dd($data);
-
+    
         $user = User::findOrFail(auth()->user()->id);
-        $user->update([
+        $updated = $user->update([
             'name' => $data['name'],
             'phone' => $data['phone'],
             'gender' => $data['gender'],
             'birthday' => $data['birthday'],
             'address' => $data['address'],
         ]);
-
-        return redirect()->route('authen.profile')->with('suc', 'Sửa thông tin thành công');
+    
+        // Nếu cập nhật thành công ($updated là true)
+        if ($updated) {
+            // Gửi email đến người dùng với email từ $user thay vì $updated
+            Mail::to($user->email)->send(new Profile($user));
+    
+            return redirect()->route('authen.profile')->with('suc', 'Sửa thông tin thành công');
+        } else {
+            // Xử lý khi cập nhật thất bại
+            return redirect()->back()->with('error', 'Không thể cập nhật thông tin. Vui lòng thử lại.');
+        }
     }
+    
 
     public function change_password(){
         return view('authen.change_password');
@@ -107,9 +128,20 @@ class AuthController extends Controller
 
     public function check_change_password(){
         $data = request()->validate([
-            'old_password' => 'required',
             'new_password' => 'required',
-            'confirm_password' => 'required|same:new_password'
+            'confirm_password' => 'required|same:new_password',
+            'old_password' => ['required', function($attr, $value, $fail) {
+                if (!Hash::check($value, auth()->user()->password)) {
+                    return $fail('Mật khẩu của bạn không đúng để thay đổi hồ sơ');
+                }
+            }],
+            'email' => ['required','email','unique:users,email,' . auth()->user()->id,
+                function($attr, $value, $fail) {
+                    if ($value !== auth()->user()->email) {
+                        return $fail('Email của bạn không đúng để thay đổi mật khẩu');
+                    }
+                }
+            ]
         ]);
 
         if(Hash::check($data['old_password'], auth()->user()->password)){
@@ -117,7 +149,9 @@ class AuthController extends Controller
             $user->password = Hash::make($data['new_password']);
             $user->save();
 
+            Mail::to($user->email)->send(new change_password($user));
             return redirect()->route('authen.login')->with('suc', 'Thay đổi mật khẩu thành công');
+
         }else{
             return redirect()->back()->with('fail','Thay đổi mật khẩu thất bại');
         }

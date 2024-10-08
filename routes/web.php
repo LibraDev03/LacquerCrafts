@@ -59,9 +59,14 @@ Route::group(['prefix' =>'admin'], function() {
 
 Route::group(['prefix' => 'client'], function() {
     Route::get('/', [ClientController::class, 'home'])->name('client.home');
-    Route::get('/shop', [clientController::class, 'shop'])->name('client.shop');
     Route::get('/blog', [clientController::class, 'blog'])->name('client.blog');
     Route::get('/about', [clientController::class, 'about'])->name('client.about');
     Route::get('/contact', [clientController::class, 'contact'])->name('client.contact');
+    
+    Route::group(['prefix' => 'shop'],function(){
+        Route::get('/', [clientController::class, 'shop'])->name('client.shop');
+        Route::get('/category/{cat}', [ClientController::class, 'category'])->name('client.category');
+
+    });
 
 });

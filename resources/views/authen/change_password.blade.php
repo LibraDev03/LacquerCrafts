@@ -33,54 +33,61 @@
                         <div class="login-register-form">
                             <form action="{{route('authen.change_password')}}" method="POST">
                                 @csrf
-                                @if (Session::has('fail'))
+                                {{-- @if (Session::has('nooooooooo'))
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     <p style="text-align: center" >{{ Session::get('fail') }}</p>
                                 </div>
-                                @endif
+                                @endif --}}
                                 <div class="row learts-mb-n50">
-                                    <div class="col-12 learts-mb-20">
-                                        <label for="password">Mật khẩu cũ của bạn<abbr class="required">*</abbr></label>
-                                        <input type="password" id="old_password" name="old_password">
+                                    <!-- Mật khẩu cũ và Email trên cùng một hàng -->
+                                    <div class="col-md-6 learts-mb-20">
+                                        <label for="email">Xác nhận email của bạn để thay đổi thông tin<abbr class="required">*</abbr></label>
+                                        <input type="email" id="email" name="email" class="form-control shadow-none" required>
+                                        @error('email')
+                                            <small style="color: red;">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6 learts-mb-20">
+                                        <label for="old_password">Mật khẩu cũ của bạn<abbr class="required">*</abbr></label>
+                                        <input type="password" id="old_password" name="old_password" class="form-control shadow-none">
                                         @error('old_password')
-                                            <small style="color: red;" >{{ $message }}</small>
+                                            <small style="color: red;">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="col-12 learts-mb-20">
-                                        <label for="password">Mật khẩu mới của bạn<abbr class="required">*</abbr></label>
-                                        <input type="password" id="new_password" name="new_password">
+                                    <!-- Mật khẩu mới và Xác nhận mật khẩu mới trên cùng một hàng -->
+                                    <div class="col-md-6 learts-mb-20">
+                                        <label for="new_password">Mật khẩu mới của bạn<abbr class="required">*</abbr></label>
+                                        <input type="password" id="new_password" name="new_password" class="form-control shadow-none">
                                         @error('new_password')
-                                            <small style="color: red;" >{{ $message }}</small>
+                                            <small style="color: red;">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="col-12 learts-mb-20">
-                                        <label for="password">Xác nhận mật khẩu mới của bạn<abbr class="required">*</abbr></label>
-                                        <input type="password" id="confirm_password" name="confirm_password">
+                                    <div class="col-md-6 learts-mb-20">
+                                        <label for="confirm_password">Xác nhận mật khẩu mới của bạn<abbr class="required">*</abbr></label>
+                                        <input type="password" id="confirm_password" name="confirm_password" class="form-control shadow-none">
                                         @error('confirm_password')
-                                            <small style="color: red;" >{{ $message }}</small>
+                                            <small style="color: red;">{{ $message }}</small>
                                         @enderror
                                     </div>
+                                
+                                    <!-- Các phần còn lại -->
                                     <div class="col-12 text-center learts-mb-50">
                                         <div class="d-flex justify-content-between">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" id="rememberMe">
-                                                <label class="form-check-label" for="rememberMe">
-                                                    Nhớ thông tin của bạn
-                                                </label>
+                                                <label class="form-check-label" for="rememberMe">Nhớ thông tin của bạn</label>
                                             </div>
-                                            <a href="#" class="text-decoration-none">Bạn bị mất mật khẩu ?</a>
+                                            <a href="#" class="text-decoration-none">Bạn bị mất mật khẩu?</a>
                                             <a href="{{route('authen.register')}}" class="text-decoration-none">Trang đăng kí</a>
                                         </div>
-                                        <br>
-                                        <br>
-                                        {{-- <p>Dữ liệu cá nhân của bạn sẽ được sử dụng để hỗ trợ trải nghiệm trên toàn bộ trang web này, và nó được chúng tôi bảo mật một cách kín đáo nhất</p> --}}
-
+                                        <br><br>
                                     </div>
-                                    
+                                
                                     <div class="col-12 text-center learts-mb-50">
-                                        <button class="btn btn-dark btn-outline-hover-dark">Đôir mật khẩu</button>
+                                        <button class="btn btn-dark btn-outline-hover-dark">Đổi mật khẩu</button>
                                     </div>
                                 </div>
+                                
                             </form>
                         </div>
                     </div>

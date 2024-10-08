@@ -13,4 +13,9 @@ class Category extends Model
         'name',
         'description'
     ];
+
+    // 1 danh muc se co nhieu san pham => dung de truy van nhung san pham cung category
+    public function products() {
+        return $this->hasMany(Product::class, 'category_id', 'id')->orderBy('id', 'DESC');
+    }
 }

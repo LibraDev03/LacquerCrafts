@@ -107,23 +107,13 @@
                         <ul>
                             <li class=""><a href="{{route('client.home')}}"><span class="menu-text">Trang chủ</span></a></li>
                             <li class="has-children"><a href="{{route('client.shop')}}"><span class="menu-text">Cửa hàng</span></a>
-                                <ul class="sub-menu mega-menu">
+                                <ul class="sub-menu ">
                                     <li>
-                                        <a href="#" class="mega-menu-title"><span class="menu-text">SHOP PAGES</span></a>
+                                        <a href="{{route('client.shop')}}" class="-title"><span class="menu-text">Các danh mục sản phẩm có trong cửa hàng</span></a>
                                         <ul>
-                                            <li><a href="shop-fullwidth-right-sidebar.html"><span class="menu-text">Shop Fullwidth Right Sidebar</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="mega-menu-title"><span class="menu-text">PRODUCT PAGES</span></a>
-                                        <ul>
-                                            <li><a href="product-details-360.html"><span class="menu-text">Product 360</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="mega-menu-title"><span class="menu-text">PRODUCT & Other PAGES</span></a>
-                                        <ul>
-                                            <li><a href="lost-password.html"><span class="menu-text">Lost Password</span></a></li>
+                                            @foreach ($cate as $cate)
+                                            <li><a href="{{route('client.category', $cate->id)}}"><span class="menu-text">{{$cate->name}}</span></a></li>
+                                            @endforeach
                                         </ul>
                                     </li>
                                 </ul>
