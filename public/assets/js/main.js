@@ -792,13 +792,13 @@
         };
     $productPopupGalleryBtn.on('click', $openPhotoSwipe);
 
-    $('.product-zoom').each(function () {
-        var $this = $(this),
-            $image = $this.data('image');
-        $this.zoom({
-            url: $image
-        });
-    });
+    // $('.product-zoom').each(function () {
+    //     var $this = $(this),
+    //         $image = $this.data('image');
+    //     $this.zoom({
+    //         url: $image
+    //     });
+    // });
 
     /*--
         Sticky Sidebar

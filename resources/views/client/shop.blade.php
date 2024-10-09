@@ -234,7 +234,7 @@
                             <h3 class="widget-title product-filter-widget-title">Danh mục các sản phẩm</h3>
                             <ul class="widget-list">
                                 @foreach ($cate as $cate)
-                                <li><a href="{{route('client.category', $cate->id)}}">{{$cate->name}}</a> <span class="count">16</span></li>
+                                <li><a href="{{route('client.category', $cate->id)}}">{{$cate->name}}</a> <span class="count">{{$cate->products->count()}}</span></li>
                                 @endforeach
                             </ul>
                         </div>

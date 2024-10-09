@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Cast\String_;
 
 class ClientController extends Controller
 {
@@ -38,5 +39,10 @@ class ClientController extends Controller
         $products = $cat->products()->inRandomOrder()->get();
         $new_product = Product::orderBy('id', 'DESC')->limit(3)->get();
         return view('client.category',compact('cat','products','new_product'));
+    }
+
+    public function product(Product $product) {
+        $products = Product::where('category_id', $product->category_id )->limit(5)->get()->shuffle();
+        return view('client.product', compact('product','products'));
     }
 }

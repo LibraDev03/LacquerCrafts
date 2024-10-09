@@ -86,7 +86,7 @@
                         <div class="col "  >
                             <div class="product">
                                 <div class="product-thumb">
-                                    <a href="product-details.html" class="image">
+                                    <a href="{{route('client.product' , $new_product->id )}}" class="image">
                                         <span class="product-badges">
                                             <span class="onsale">-27%</span>
                                         <span class="hot">hot</span>
@@ -148,7 +148,7 @@
                             <img src="assets/images/banner/sale/sale-banner8-1.webp" alt="Sale Banner Image">
                             <div class="content">
                                 <h2 class="title">Thiết kế <br> đơn giản</h2>
-                                <a href="#" class="link">Mua ngay !</a>
+                                <a href="{{route('client.category' , ['cat' => 4])}}" class="link">Mua ngay !</a>
                             </div>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                             <img src="assets/images/banner/sale/sale-banner8-2.webp" alt="Sale Banner Image">
                             <div class="content">
                                 <h2 class="title">Quà tặng<br>dịp lễ</h2>
-                                <a href="#" class="link">Mua ngay !</a>
+                                <a href="{{route('client.category' , ['cat' => 3])}}" class="link">Mua ngay !</a>
                             </div>
                         </div>
                     </div>
@@ -189,7 +189,7 @@
                                     <div class="col">
                                         <div class="product">
                                             <div class="product-thumb">
-                                                <a href="product-details.html" class="image">
+                                                <a href="{{route('client.product' , $all_product->id )}}" class="image">
                                                     <span class="product-badges">
                                                         <span class="hot">hot</span>
                                                     </span>
@@ -237,7 +237,7 @@
                                     <div class="col">
                                         <div class="product">
                                             <div class="product-thumb">
-                                                <a href="product-details.html" class="image">
+                                                <a href="{{route('client.product' , $sale_product->id )}}" class="image">
                                                     <span class="product-badges">
                                                         <span class="onsale">-27%</span>
                                                     <span class="hot">hot</span>
@@ -305,7 +305,29 @@
     
                     <div class="col learts-mb-40">
                         <div class="category-banner4">
-                            <a href="shop.html" class="inner">
+                            <a href="{{route('client.category' , ['cat' => 1])}}" class="inner">
+                                <div class="image"><img src="assets/images/banner/category/banner-s4-2.webp" alt=""></div>
+                                <div class="content" data-bg-color="#e8f5f2">
+                                    <h3 class="title">Đồ nội thất</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+    
+                    <div class="col learts-mb-40">
+                        <div class="category-banner4">
+                            <a href="{{route('client.category' , ['cat' => 2])}}" class="inner">
+                                <div class="image"><img src="assets/images/banner/category/banner-s4-3.webp" alt=""></div>
+                                <div class="content" data-bg-color="#e3e4f5">
+                                    <h3 class="title">Đồ chơi</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col learts-mb-40">
+                        <div class="category-banner4">
+                            <a href="{{route('client.category' , ['cat' => 3])}}" class="inner">
                                 <div class="image"><img src="assets/images/banner/category/banner-s4-1.webp" alt=""></div>
                                 <div class="content" data-bg-color="#f4ede7">
                                     <h3 class="title">Quà tặng</h3>
@@ -314,34 +336,13 @@
                         </div>
                     </div>
     
-                    <div class="col learts-mb-40">
-                        <div class="category-banner4">
-                            <a href="shop.html" class="inner">
-                                <div class="image"><img src="assets/images/banner/category/banner-s4-2.webp" alt=""></div>
-                                <div class="content" data-bg-color="#e8f5f2">
-                                    <h3 class="title">Trang trí nhà</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
     
                     <div class="col learts-mb-40">
                         <div class="category-banner4">
-                            <a href="shop.html" class="inner">
-                                <div class="image"><img src="assets/images/banner/category/banner-s4-3.webp" alt=""></div>
-                                <div class="content" data-bg-color="#e3e4f5">
-                                    <h3 class="title">Đồ chơi</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-    
-                    <div class="col learts-mb-40">
-                        <div class="category-banner4">
-                            <a href="shop.html" class="inner">
+                            <a href="{{route('client.category' , ['cat' => 4])}}" class="inner">
                                 <div class="image"><img src="assets/images/banner/category/banner-s4-4.webp" alt=""></div>
                                 <div class="content" data-bg-color="#faf5e5">
-                                    <h3 class="title">Nội thất</h3>
+                                    <h3 class="title">Đồ trang trí</h3>
                                 </div>
                             </a>
                         </div>

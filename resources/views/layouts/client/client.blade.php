@@ -4,6 +4,7 @@
 
 <!-- Mirrored from htmldemo.net/learts/learts/index-8.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 14 Sep 2024 08:57:24 GMT -->
 <head>
+    <base href="/">
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Learts - @yield('title')</title>
@@ -109,8 +110,8 @@
                             <li class="has-children"><a href="{{route('client.shop')}}"><span class="menu-text">Cửa hàng</span></a>
                                 <ul class="sub-menu ">
                                     <li>
-                                        <a href="{{route('client.shop')}}" class="-title"><span class="menu-text">Các danh mục sản phẩm có trong cửa hàng</span></a>
-                                        <ul>
+                                        <h6><b><a href="{{route('client.shop')}}" class="-title"><span class="menu-text">Các danh mục sản phẩm có trong cửa hàng</span></a></b></h6>
+                                        <ul style="list-style: none; padding: 0;margin: 0;">
                                             @foreach ($cate as $cate)
                                             <li><a href="{{route('client.category', $cate->id)}}"><span class="menu-text">{{$cate->name}}</span></a></li>
                                             @endforeach
@@ -1082,12 +1083,12 @@
     
                     <div class="footer1-menu col">
                         <ul class="widget-menu justify-content-center">
-                            <li><a href="#">Về chúng tôi</a></li>
-                            <li><a href="#">Vị trí cửa hàng</a></li>
-                            <li><a href="#">Liên lạc</a></li>
-                            <li><a href="#">Hỗ trợ</a></li>
-                            <li><a href="#">Chính sách</a></li>
-                            <li><a href="#">Câu hỏi thường gặp</a></li>
+                            <li><a href="{{route('client.about')}}">Về chúng tôi</a></li>
+                            <li><a href="{{route('client.contact')}}">Vị trí cửa hàng</a></li>
+                            <li><a href="{{route('client.contact')}}">Liên lạc</a></li>
+                            <li><a href="{{route('client.contact')}}">Hỗ trợ</a></li>
+                            <li><a href="{{route('client.contact')}}">Chính sách</a></li>
+                            <li><a href="{{route('client.contact')}}">Câu hỏi thường gặp</a></li>
                         </ul>
                     </div>
                     <div class="footer1-social col">

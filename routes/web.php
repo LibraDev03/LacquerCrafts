@@ -67,6 +67,8 @@ Route::group(['prefix' => 'client'], function() {
         Route::get('/', [clientController::class, 'shop'])->name('client.shop');
         Route::get('/category/{cat}', [ClientController::class, 'category'])->name('client.category');
 
+        Route::get('product/{product}', [ClientController::class, 'product'])->name('client.product');
+
     });
 
 });
