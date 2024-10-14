@@ -94,12 +94,22 @@
                                         <img src="assets/images/product/{{$new_product->image}}" alt="Product Image">
                                         <img class="image-hover " src="assets/images/product/s328/product-8-hover.webp" alt="Product Image">
                                     </a>
-                                    <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
+
+                                    @if ($new_product->favorited)
+                                        <a href="{{ route('client.favorite', $new_product->id) }}" class="add-to-wishlist hintT-left wishlist-added" data-hint="Remove from wishlist">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                    @else
+                                        <a href="{{ route('client.favorite', $new_product->id) }}" class="add-to-wishlist hintT-left" data-hint="Add to wishlist">
+                                            <i class="far fa-heart"></i>
+                                        </a>
+                                    @endif
+
                                     <div class="product-options">
                                         <ul class="colors">
                                             <li style="background-color: #000000;">color one</li>
-                                            <li style="background-color: #c2c2c2;">color one</li>
-                                            <li style="background-color: #b2483c;">color two</li>
+                                            <li style="background-color: #c2c2c2;">color two</li>
+                                            <li style="background-color: #b2483c;">color three</li>
                                         </ul>
                                         <ul class="sizes">
                                             <li>Large</li>
@@ -196,7 +206,17 @@
                                                     <img src="assets/images/product/{{$all_product->image}}" alt="Product Image">
                                                     <img class="image-hover " src="assets/images/product/s328/product-8-hover.webp" alt="Product Image">
                                                 </a>
-                                                <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
+                                                
+                                                @if ($all_product->favorited)
+                                                    <a href="{{ route('client.favorite', $all_product->id) }}" class="add-to-wishlist hintT-left wishlist-added" data-hint="Remove from wishlist">
+                                                        <i class="fas fa-heart"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('client.favorite', $all_product->id) }}" class="add-to-wishlist hintT-left" data-hint="Add to wishlist">
+                                                        <i class="far fa-heart"></i>
+                                                    </a>
+                                                @endif
+
                                                 <div class="product-options">
                                                     <ul class="colors">
                                                         <li style="background-color: #000000;">color one</li>
@@ -245,7 +265,17 @@
                                                     <img src="assets/images/product/{{$sale_product->image}}" alt="Product Image">
                                                     <img class="image-hover " src="assets/images/product/s328/product-8-hover.webp" alt="Product Image">
                                                 </a>
-                                                <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
+                                                
+                                                @if ($sale_product->favorited)
+                                                    <a href="{{ route('client.favorite', $sale_product->id) }}" class="add-to-wishlist hintT-left wishlist-added" data-hint="Remove from wishlist">
+                                                        <i class="fas fa-heart"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('client.favorite', $sale_product->id) }}" class="add-to-wishlist hintT-left" data-hint="Add to wishlist">
+                                                        <i class="far fa-heart"></i>
+                                                    </a>
+                                                @endif
+
                                                 <div class="product-options">
                                                     <ul class="colors">
                                                         <li style="background-color: #000000;">color one</li>

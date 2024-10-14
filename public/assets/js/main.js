@@ -258,6 +258,20 @@
                 easing: 'quint.out'
             }
         });
+
+       // Phần JavaScript xử lý trạng thái mặc định
+        $('.add-to-wishlist').each(function () {
+            var $this = $(this);
+            
+            // Kiểm tra nếu có class 'wishlist-added' để hiển thị biểu tượng đúng
+            if ($this.hasClass('wishlist-added')) {
+                $this.find('i').removeClass('far').addClass('fas');
+            } else {
+                $this.find('i').removeClass('fas').addClass('far');
+            }
+        });
+
+        // Phần JavaScript xử lý khi nhấn vào biểu tượng
         $('.add-to-wishlist').on('click', function (e) {
             var $this = $(this),
                 offset = $this.offset(),
@@ -267,12 +281,23 @@
                     x: offset.left + width / 2,
                     y: offset.top + height / 2
                 };
+
+            // Kiểm tra nếu chưa có class 'wishlist-added'
             if (!$this.hasClass('wishlist-added')) {
-                e.preventDefault();
+                // Thêm class và thay đổi biểu tượng
                 $this.addClass('wishlist-added').find('i').removeClass('far').addClass('fas');
+                // Phát hoạt ảnh burst
                 burst.tune(coords).replay();
+            } else {
+                // Nếu đã có class 'wishlist-added', có thể thêm logic để xóa khỏi danh sách yêu thích
+                $this.removeClass('wishlist-added').find('i').removeClass('fas').addClass('far');
             }
+            
+            // Không ngăn chặn hành vi mặc định
+            // Để form/route có thể được submit hoặc điều hướng
         });
+
+       
     })();
 
     /*--

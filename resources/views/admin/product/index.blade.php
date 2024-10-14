@@ -26,8 +26,8 @@
                     <td>{{ $product->cat->name }}</td>
                     <td>{{ $product->weight }}</td>
                     <td>{{ $product->dimensions }}</td>
-                    <td>${{ $product->price }}</td>
-                    <td>${{ $product->discount }}</td>
+                    <td>${{number_format( $product->price) }}</td>
+                    <td>${{number_format( $product->discount) }}</td>
                     <td><img src="{{ asset('assets/images/product/' . $product->image) }}" alt="" width="50px"></td>
                     <td class="description-column">{{ $product->description }}</td>
                     <td>

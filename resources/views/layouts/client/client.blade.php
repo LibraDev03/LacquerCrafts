@@ -209,7 +209,7 @@
                         </div>
                         <div class="header-wishlist">
                             <a href="#offcanvas-wishlist" class="offcanvas-toggle">
-                                <span class="wishlist-count">3</span><i class="far fa-heart"></i>
+                                <span class="wishlist-count">{{$wishlist->count()}}</span><i class="far fa-heart"></i>
                             </a>
                         </div>
                         <div class="header-cart">
@@ -774,40 +774,36 @@
     <div id="offcanvas-wishlist" class="offcanvas offcanvas-wishlist">
         <div class="inner">
             <div class="head">
-                <span class="title">Wishlist</span>
+                <span class="title">Các sản phẩm yêu thích của bạn</span>
                 <button class="offcanvas-close">×</button>
             </div>
             <div class="body customScroll">
                 <ul class="minicart-product-list">
-                    <li>
-                        <a href="product-details.html" class="image"><img src="assets/images/product/cart-product-1.webp" alt="Cart product Image"></a>
-                        <div class="content">
-                            <a href="product-details.html" class="title">Walnut Cutting Board</a>
-                            <span class="quantity-price">1 x <span class="amount">$100.00</span></span>
-                            <a href="#" class="remove">×</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="product-details.html" class="image"><img src="assets/images/product/cart-product-2.webp" alt="Cart product Image"></a>
-                        <div class="content">
-                            <a href="product-details.html" class="title">Lucky Wooden Elephant</a>
-                            <span class="quantity-price">1 x <span class="amount">$35.00</span></span>
-                            <a href="#" class="remove">×</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="product-details.html" class="image"><img src="assets/images/product/cart-product-3.webp" alt="Cart product Image"></a>
-                        <div class="content">
-                            <a href="product-details.html" class="title">Fish Cut Out Set</a>
-                            <span class="quantity-price">1 x <span class="amount">$9.00</span></span>
-                            <a href="#" class="remove">×</a>
-                        </div>
-                    </li>
+                    @foreach ($wishlist as $wishlist)
+                        <li>
+                            <a href="product-details.html" class="image"><img src="assets/images/product/{{$wishlist->prodF->image}}" alt="Cart product Image"></a>
+                            <div class="content">
+                                <span class="quantity-price" style="padding-left: 35px"><b>1</b> x 
+                                    <span class="amount">{{ number_format($wishlist->prodF->price) }} VND</span>
+                                </span>
+                                <div>
+                                    <strong>Sản phẩm:</strong> 
+                                    <a href="product-details.html" class="title">{{ $wishlist->prodF->name }}</a>
+                                </div>
+                                <div>
+                                    <strong>Danh mục:</strong> 
+                                    <a href="product-details.html" class="title">{{ $wishlist->prodF->cat->name }}</a>
+                                </div>
+                                <a href="#" class="remove">×</a>
+                            </div>
+                            
+                        </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="foot">
                 <div class="buttons">
-                    <a href="wishlist.html" class="btn btn-dark btn-hover-primary">view wishlist</a>
+                    <a href="{{route('client.wishlist')}}" class="btn btn-dark btn-hover-primary">Danh sách sản phẩm yêu thích</a>
                 </div>
             </div>
         </div>

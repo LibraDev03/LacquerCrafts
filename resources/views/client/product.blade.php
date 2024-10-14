@@ -159,7 +159,19 @@
                                 </table>
                             </div>
                             <div class="product-buttons">
-                                <a href="#" class="btn btn-icon btn-outline-body btn-hover-dark hintT-top" data-hint="Add to Wishlist"><i class="far fa-heart"></i></a>
+                                @if ($product->favorited)
+                                    <a href="{{ route('client.favorite', $product->id) }}" 
+                                    class="add-to-wishlist btn btn-icon btn-outline-body btn-hover-dark hintT-top wishlist-added text-danger" 
+                                    data-hint="Remove from wishlist">
+                                        <i class="fas fa-heart"></i> <!-- Trái tim đầy -->
+                                    </a>
+                                @else
+                                    <a href="{{ route('client.favorite', $product->id) }}" 
+                                    class="add-to-wishlist btn btn-icon btn-outline-body btn-hover-dark hintT-top" 
+                                    data-hint="Add to wishlist">
+                                        <i class="far fa-heart"></i> <!-- Trái tim rỗng -->
+                                    </a>
+                                @endif
                                 <a href="#" class="btn btn-dark btn-outline-hover-dark"><i class="fas fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                                 <a href="#" class="btn btn-icon btn-outline-body btn-hover-dark hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
                             </div>
@@ -199,7 +211,7 @@
                     <li><a class="active" data-bs-toggle="tab" href="#tab-description">Mô tả danh mục </a></li>
                     <li><a data-bs-toggle="tab" href="#tab-pwb_tab">Nhãn hàng </a></li>
                     <li><a data-bs-toggle="tab" href="#tab-additional_information">Chi tiêt </a></li>
-                    <li><a data-bs-toggle="tab" href="#tab-reviews">Đánh giá (3)</a></li>
+                    <li><a data-bs-toggle="tab" href="#tab-reviews">Đánh giá ({{$comment->count()}})</a></li>
                 </ul>
 
                 {{-- style cho khoảng cách các li bên trên --}}
@@ -289,57 +301,54 @@
                     </div>
                     <div class="tab-pane fade" id="tab-reviews">
                         <div class="product-review-wrapper">
-                            <span class="title">2 reviews for Decorative Christmas Fox</span>
+                            <span class="title">Đánh giá của khách hàng để lại</span>
                             <ul class="product-review-list">
-                                <li>
+                                @foreach ($comment as $comment)
+                                <li class="position-relative">
                                     <div class="product-review">
-                                        <div class="thumb"><img src="assets/images/review/review-2.webp" alt=""></div>
+                                        <div class="thumb">
+                                            <img src="assets/images/review/review-2.webp" alt="Reviewer Image">
+                                        </div>
                                         <div class="content">
+
+                                            @can('myComment', $comment)
+                                                {{-- Nút Xóa ở góc trên bên phải --}}
+                                                <form action="{{route('client.comment_delete', $comment->id)}}" method="POST" 
+                                                    onsubmit="return confirm('Bạn có chắc chắn muốn xóa bình luận này?');"
+                                                    class="position-absolute top-0 end-0 me-2 mt-2">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-dark btn-outline-hover-dark btn-sm">X</button>
+                                                </form>
+                                            @endcan
+                                            
+                            
                                             <div class="ratings">
                                                 <span class="star-rating">
                                                     <span class="rating-active" style="width: 100%;">ratings</span>
                                                 </span>
                                             </div>
                                             <div class="meta">
-                                                <h5 class="title">Scott James</h5>
-                                                <span class="date">November 27, 2020</span>
+                                                <h5 class="title">{{ $comment->commentU->name }}</h5>
+                                                <span class="date">{{ $comment->created_at->format('d-m-Y') }}</span>
                                             </div>
-                                            <p>Thanks for always keeping your WordPress themes up to date. Your level of support and dedication is second to none.</p>
+                                            <p>{{ $comment->comment }}</p>
                                         </div>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="product-review">
-                                        <div class="thumb"><img src="assets/images/review/review-1.webp" alt=""></div>
-                                        <div class="content">
-                                            <div class="ratings">
-                                                <span class="star-rating">
-                                                    <span class="rating-active" style="width: 80%;">ratings</span>
-                                                </span>
-                                            </div>
-                                            <div class="meta">
-                                                <h5 class="title">Edna Watson</h5>
-                                                <span class="date">November 27, 2020</span>
-                                            </div>
-                                            <p>Wonderful quality, and an awesome design !</p>
-                                        </div>
-                                    </div>
-                                </li>
+                            @endforeach
+                            
+                                
                             </ul>
-                            <span class="title">Add a review</span>
+                            <span class="title">Thêm đánh của bạn về ản phẩm của chúng tôi</span>
                             <div class="review-form">
-                                <p class="note">Your email address will not be published. Required fields are marked *</p>
-                                <form action="#">
+                                <p class="note" style="text-align: center">Email của bạn sẽ được giữ kín trong các đánh giá *</p>
+                                <form action="{{route('client.comment', $product->id)}}" method="POST">
+                                    @csrf
                                     <div class="row learts-mb-n30">
-                                        <div class="col-md-6 col-12 learts-mb-30"><input type="text" placeholder="Name *"></div>
-                                        <div class="col-md-6 col-12 learts-mb-30"><input type="email" placeholder="Email *"></div>
-                                        <div class="col-12 learts-mb-10">
-                                            <div class="form-rating">
-                                                <span class="title">Your rating</span>
-                                                <span class="rating"><span class="star"></span></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 learts-mb-30"><textarea placeholder="Your Review *"></textarea></div>
+                                        <div class="col-md-6 col-12 learts-mb-30"><input type="text" name="name" placeholder="Họ và tên của bạn *"></div>
+                                        <div class="col-md-6 col-12 learts-mb-30"><input type="email" name="email" placeholder="Email của bạn (ghi đúng địa chỉ email) *"></div>
+                                        <div class="col-12 learts-mb-30"><textarea name="comment" placeholder="Đánh giá của bạn về sản phẩm của chúng tôi ở đây *"></textarea></div>
                                         <div class="col-12 text-center learts-mb-30"><button class="btn btn-dark btn-outline-hover-dark">Submit</button></div>
                                     </div>
                                 </form>

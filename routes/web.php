@@ -69,6 +69,12 @@ Route::group(['prefix' => 'client'], function() {
 
         Route::get('product/{product}', [ClientController::class, 'product'])->name('client.product');
 
+        Route::post('/comment/{product}', [ClientController::class, 'comment'])->name('client.comment');
+        Route::delete('/comment/{id}', [ClientController::class, 'delete_comment'])->name('client.comment_delete');
+
     });
+
+    Route::get('/favorite/{product}', [clientController::class, 'favorite'])->name('client.favorite');
+    Route::get('/wishlist', [ClientController::class, 'wishlist'])->name('client.wishlist');
 
 });
