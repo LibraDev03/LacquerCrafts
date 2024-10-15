@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Favorite;
@@ -26,8 +27,9 @@ class ClientController extends Controller
         return view('client.shop', compact('all_product', 'new_product'));
     }
 
-    public function blog(){
-        return view('client.blog');
+    public function content(){
+        $blog = Blog::all();
+        return view('client.blog', compact('blog'));
     }
 
     public function about(){
@@ -36,6 +38,8 @@ class ClientController extends Controller
 
     public function contact(){
         return view('client.contact');
+        return view('client.abs');
+
     }
 
     public function category(Category $cat) {

@@ -105,7 +105,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
-                Sản phẩm
+                Quản lý sản phẩm
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -120,6 +120,29 @@
                 <a href="{{route('product.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm sản phẩm</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-list-alt"></i>
+              <p>
+                Quản lý bài viết
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('blog.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách bài viết</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('blog.create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm bài viết</p>
                 </a>
               </li>
             </ul>

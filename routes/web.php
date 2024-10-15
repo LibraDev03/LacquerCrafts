@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
@@ -53,13 +54,18 @@ Route::group(['prefix' =>'admin'], function() {
     Route::resources([
         'user' => UserController::class,
         'category'=> CategoryController::class,
-        'product'=> ProductController::class
+        'product'=> ProductController::class,
+        'blog' => BlogController::class
     ]);
 });
 
 Route::group(['prefix' => 'client'], function() {
     Route::get('/', [ClientController::class, 'home'])->name('client.home');
-    Route::get('/blog', [clientController::class, 'blog'])->name('client.blog');
+
+    Route::group(['prefix' => 'content'],function(){
+    Route::get('/', [ClientController::class, 'content'])->name('client.blog');
+    });
+
     Route::get('/about', [clientController::class, 'about'])->name('client.about');
     Route::get('/contact', [clientController::class, 'contact'])->name('client.contact');
     
