@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Favorite;
 use App\Models\User;
@@ -25,10 +26,12 @@ class AppServiceProvider extends ServiceProvider
         // truyền dữ liệu ra toàn bộ hệ thống (coi là biến toàn cục global)
         view()->composer('*', function($view){
             $cate = Category::orderBy('name', 'DESC')->get();
+            $cate2 = Category::orderBy('name', 'DESC')->get();
             $wishlist = Favorite::where('user_id', auth()->id())->get();
+            $cart = Cart::where('user_id', auth()->id())->get();
 
             // compac sang để sử dụng những biến trên
-            $view->with(compact('cate','wishlist'));
+            $view->with(compact('cate','cate2','wishlist','cart'));
         });
     }
 }

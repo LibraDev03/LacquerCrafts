@@ -59,12 +59,15 @@
                                         @endif
                                     </td>
                                     <td class="add-to-cart">
-                                        <a href="#" class="btn btn-light btn-hover-dark">
+                                        <a href="{{route('client.add_cart', $wishlistItem->product_id)}}" class="btn btn-light btn-hover-dark">
                                             <i class="fas fa-shopping-cart mr-2"></i>Thêm vào giỏ
                                         </a>
                                     </td>
                                     <td class="remove">
-                                        <a href="#" class="btn">×</a>
+                                        <a href="{{ route('client.favorite', $wishlistItem->product_id) }}" class="btn">×</a>
+                                        {{-- <a href="{{ route('client.favorite', $wishlistItem->product_id) }}" class="add-to-wishlist hintT-left wishlist-added" data-hint="Remove from wishlist">
+                                            <i class="fas fa-heart"></i>
+                                        </a> --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -73,8 +76,9 @@
                     </table>
                     <div class="row">
                         <div class="col text-center mb-n3">
-                            <a class="btn btn-light btn-hover-dark mr-3 mb-3" href="shop.html">Continue Shopping</a>
-                            <a class="btn btn-light btn-hover-dark mr-3 mb-3" href="shopping-cart.html">View Cart</a>
+                            <a class="btn btn-light btn-hover-dark mr-3 mb-3" href="{{route('client.shop')}}">Tiếp tục mua sắm</a>
+                            <a class="btn btn-light btn-hover-dark mr-3 mb-3" href="{{route('client.cart')}}">Đi đến giỏ hàng</a>
+                            <a class="btn btn-light btn-hover-dark mr-3 mb-3" href="{{route('client.clear_wishlish')}}">Xóa danh sách yêu thích</a>
                         </div>
                     </div>
                 </form>

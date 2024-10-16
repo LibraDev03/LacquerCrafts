@@ -75,6 +75,11 @@ class ClientController extends Controller
         return view('client.wishlist');
     }
 
+    public function clear_wishlish(){
+        Favorite::where('user_id', auth()->id())->delete();
+        return redirect()->route('client.home')->with('suc', 'Xoá danh sách yêu thích thành công');
+    }
+
     public function comment(Product $product) {
         $data = request()->all('comment');
         $data['product_id'] = $product->id;

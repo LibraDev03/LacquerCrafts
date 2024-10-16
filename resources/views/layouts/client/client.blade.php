@@ -169,11 +169,10 @@
                             <li class=""><a href="{{route('client.about')}}"><span class="menu-text">Về chúng tôi</span></a></li>
                             <li class="has-children"><a href="{{route('client.contact')}}"><span class="menu-text">Liên lạc</span></a>
                                 <ul class="sub-menu">
-                                    <li><a href="about-us.html"><span class="menu-text">About us</span></a></li>
-                                    <li><a href="about-us-2.html"><span class="menu-text">About us 02</span></a></li>
-                                    <li><a href="contact-us.html"><span class="menu-text">Contact us</span></a></li>
-                                    <li><a href="coming-soon.html"><span class="menu-text">Coming Soon</span></a></li>
-                                    <li><a href="404.html"><span class="menu-text">Page 404</span></a></li>
+                                    <li><a href="https://www.facebook.com/profile.php?id=100010376408025"><i style="margin-right: 20px" class="fab fa-facebook-f"></i>  <span class="menu-text">facebook</span></a></li>
+                                    <li><a href="https://www.instagram.com/h_son_ng/"><i style="margin-right: 20px" class="fab fa-instagram"></i>  <span class="menu-text">Instagram</span></a></li>
+                                    <li><a href="https://www.tiktok.com/@h_son_ng?lang=vi-VN"><i style="margin-right: 20px" class="fab fa-tiktok"></i>  <span class="menu-text">Tiktok</span></a></li>
+                                    <li><a href="https://www.youtube.com/@SonNguyen-eu3zd"><i style="margin-right: 20px" class="fab fa-youtube"></i>  <span class="menu-text">youtube</span></a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -214,7 +213,7 @@
                         </div>
                         <div class="header-cart">
                             <a href="#offcanvas-cart" class="offcanvas-toggle">
-                                <span class="cart-count">3</span><i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">{{$cart->sum('quantity')}}</span><i class="fas fa-shopping-cart"></i>
                             </a>
                         </div>
                         @else    
@@ -295,132 +294,84 @@
             <div class="row align-items-center">
 
                 <!-- Header Logo Start -->
-                <div class="col-xl-auto col">
+                <div class="col-auto">
                     <div class="header-logo">
-                        <a href="index.html"><img src="assets/images/logo/logo-2.webp" alt="Learts Logo"></a>
+                        <a href="{{route('admin.dashboard')}}"><img src="{{asset('assets/images/logo/logo-2.webp')}}" alt="Learts Logo"></a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
 
                 <!-- Search Start -->
-                <div class="col-auto me-auto d-none d-xl-block">
-                    <nav class="site-main-menu site-main-menu-left justify-content-center">
+                <div class="col-auto me-auto">
+                    <nav class="site-main-menu site-main-menu-left menu-height-100 justify-content-center">
                         <ul>
-                            <li class="has-children"><a href=""><span class="menu-text">Home</span></a>
-                                <ul class="sub-menu mega-menu">
+                            <li class=""><a href="{{route('client.home')}}"><span class="menu-text">Trang chủ</span></a></li>
+                            <li class="has-children"><a href="{{route('client.shop')}}"><span class="menu-text">Cửa hàng</span></a>
+                                <ul class="sub-menu ">
                                     <li>
-                                        <a href="#" class="mega-menu-title"><span class="menu-text">HOME GROUP</span></a>
-                                        <ul>
-                                            <li> <img class="mmh_img " src="assets/images/demo/menu/home-01.webp" alt="home-01"> <a href="index.html"><span class="menu-text">Arts Propelled</span></a></li>
+                                        <h6><b><a href="{{route('client.shop')}}" class="-title"><span class="menu-text">Các danh mục sản phẩm có trong cửa hàng</span></a></b></h6>
+                                        <ul style="list-style: none; padding: 0;margin: 0;">
+                                            @foreach ($cate2 as $cate)
+                                            <li><a href="{{route('client.category', $cate->id)}}"><span class="menu-text">{{$cate->name}}</span></a></li>
+                                            @endforeach
                                         </ul>
-                                    </li>
-                                    <li>
-                                        <a href="index-2.html" class="mega-menu-title"><span class="menu-text">HOME GROUP</span></a>
-                                        <ul>
-                                            <li> <img class="mmh_img " src="assets/images/demo/menu/home-08.webp" alt="home-08"> <a href="index-8.html"><span class="menu-text">Decoholic Chic</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="index-2.html" class="mega-menu-title"><span class="menu-text">HOME GROUP</span></a>
-                                        <ul>
-                                            <li> <img class="mmh_img " src="assets/images/demo/menu/home-11.webp" alt="home-11"> <a href="index-11.html"><span class="menu-text">Craftswork Biz</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="menu-banner"><img src="assets/images/banner/menu-banner-1.webp" alt="Home Menu Banner"></a>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="has-children"><a href="#"><span class="menu-text">Shop</span></a>
-                                <ul class="sub-menu mega-menu">
-                                    <li>
-                                        <a href="#" class="mega-menu-title"><span class="menu-text">SHOP PAGES</span></a>
-                                        <ul>
-                                            <li><a href="shop-fullwidth-right-sidebar.html"><span class="menu-text">Shop Fullwidth Right Sidebar</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="mega-menu-title"><span class="menu-text">PRODUCT PAGES</span></a>
-                                        <ul>
-                                            <li><a href="product-details-360.html"><span class="menu-text">Product 360</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="mega-menu-title"><span class="menu-text">PRODUCT & Other PAGES</span></a>
-                                        <ul>
-                                            <li><a href="lost-password.html"><span class="menu-text">Lost Password</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="align-self-center">
-                                        <a href="#" class="menu-banner"><img src="assets/images/banner/menu-banner-2.webp" alt="Shop Menu Banner"></a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-children"><a href="#"><span class="menu-text">Project</span></a>
+                            {{-- project --}}
+                            {{-- <li class="has-children"><a href="#"><span class="menu-text">Project</span></a>
                                 <ul class="sub-menu">
+                                    <li><a href="portfolio-3-columns.html"><span class="menu-text">Portfolio 3 Columns</span></a></li>
+                                    <li><a href="portfolio-4-columns.html"><span class="menu-text">Portfolio 4 Columns</span></a></li>
+                                    <li><a href="portfolio-5-columns.html"><span class="menu-text">Portfolio 5 Columns</span></a></li>
                                     <li><a href="portfolio-details.html"><span class="menu-text">Portfolio Details</span></a></li>
                                 </ul>
-                            </li>
-                            <li class="has-children"><a href="#"><span class="menu-text">Elements</span></a>
+                            </li> --}}
+                            {{-- element --}}
+                            {{-- <li class="has-children"><a href="#"><span class="menu-text">Elements</span></a>
                                 <ul class="sub-menu mega-menu">
                                     <li>
                                         <a href="#" class="mega-menu-title"><span class="menu-text">Column One</span></a>
                                         <ul>
+                                            <li><a href="elements-products.html"><span class="menu-text">Product Styles</span></a></li>
+                                            <li><a href="elements-products-tabs.html"><span class="menu-text">Product Tabs</span></a></li>
                                             <li><a href="elements-product-sale-banner.html"><span class="menu-text">Product & Sale Banner</span></a></li>
                                         </ul>
                                     </li>
                                     <li>
                                         <a href="#" class="mega-menu-title"><span class="menu-text">Column Two</span></a>
                                         <ul>
+                                            <li><a href="elements-category-banner.html"><span class="menu-text">Category Banner</span></a></li>
+                                            <li><a href="elements-team.html"><span class="menu-text">Team Member</span></a></li>
                                             <li><a href="elements-testimonials.html"><span class="menu-text">Testimonials</span></a></li>
                                         </ul>
                                     </li>
                                     <li>
                                         <a href="#" class="mega-menu-title"><span class="menu-text">Column Three</span></a>
                                         <ul>
+                                            <li><a href="elements-instagram.html"><span class="menu-text">Instagram</span></a></li>
+                                            <li><a href="elements-map.html"><span class="menu-text">Google Map</span></a></li>
                                             <li><a href="elements-icon-box.html"><span class="menu-text">Icon Box</span></a></li>
                                         </ul>
                                     </li>
                                     <li>
                                         <a href="#" class="mega-menu-title"><span class="menu-text">Column Four</span></a>
                                         <ul>
+                                            <li><a href="elements-buttons.html"><span class="menu-text">Buttons</span></a></li>
+                                            <li><a href="elements-faq.html"><span class="menu-text">FAQs / Toggles</span></a></li>
                                             <li><a href="elements-brands.html"><span class="menu-text">Brands</span></a></li>
                                         </ul>
                                     </li>
                                 </ul>
-                            </li>
-                            <li class="has-children"><a href="#"><span class="menu-text">Blog</span></a>
+                            </li> --}}
+                            <li class=""><a href="{{route('client.blog')}}"><span class="menu-text">bài viết</span></a></li>
+                            <li class=""><a href="{{route('client.about')}}"><span class="menu-text">Về chúng tôi</span></a></li>
+                            <li class="has-children"><a href="{{route('client.contact')}}"><span class="menu-text">Liên lạc</span></a>
                                 <ul class="sub-menu">
-                                    <li class="has-children"><a href="blog-right-sidebar.html"><span class="menu-text">Standard Layout</span></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-fullwidth.html"><span class="menu-text">Full Width</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-children"><a href="blog-grid-right-sidebar.html"><span class="menu-text">Grid Layout</span></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-grid-fullwidth.html"><span class="menu-text">Full Width</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-children"><a href="blog-list-right-sidebar.html"><span class="menu-text">List Layout</span></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-list-fullwidth.html"><span class="menu-text">Full Width</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-children"><a href="blog-masonry-right-sidebar.html"><span class="menu-text">Masonry Layout</span></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-masonry-fullwidth.html"><span class="menu-text">Full Width</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-children"><a href="blog-details-right-sidebar.html"><span class="menu-text">Single Post Layout</span></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-details-fullwidth.html"><span class="menu-text">Full Width</span></a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-children"><a href="#"><span class="menu-text">Pages</span></a>
-                                <ul class="sub-menu">
-                                    <li><a href="404.html"><span class="menu-text">Page 404</span></a></li>
+                                    <li><a href="https://www.facebook.com/profile.php?id=100010376408025"><i style="margin-right: 20px" class="fab fa-facebook-f"></i>  <span class="menu-text">facebook</span></a></li>
+                                    <li><a href="https://www.instagram.com/h_son_ng/"><i style="margin-right: 20px" class="fab fa-instagram"></i>  <span class="menu-text">Instagram</span></a></li>
+                                    <li><a href="https://www.tiktok.com/@h_son_ng?lang=vi-VN"><i style="margin-right: 20px" class="fab fa-tiktok"></i>  <span class="menu-text">Tiktok</span></a></li>
+                                    <li><a href="https://www.youtube.com/@SonNguyen-eu3zd"><i style="margin-right: 20px" class="fab fa-youtube"></i>  <span class="menu-text">youtube</span></a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -442,30 +393,42 @@
                 <!-- Header Tools Start -->
                 <div class="col-auto">
                     <div class="header-tools justify-content-end">
-                        <div class="header-login d-none d-sm-block">
-                            <a href="my-account.html"><i class="far fa-user"></i></a>
+                        @if (Auth::check())
+                        <div class="header-login">
+                            <a href="{{route('authen.profile')}}"><i class="far fa-user"></i></a>
+                            <div class="dropdown-menu">
+                                <ul>
+                                    <li><a href="{{route('authen.profile')}}">Cá nhân</a></li>
+                                    <li><a href="{{route('authen.change_password')}}">Đổi mật khẩu</a></li>
+                                    {{-- <li><a href="{{route('authen.register')}}">Đăng kí</a></li> --}}
+                                    <li><a href="{{route('authen.logout')}}">Đăng xuất </a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="header-search d-none d-sm-block d-xl-none">
-                            <a href="#offcanvas-search" class="offcanvas-toggle"><i class="fas fa-search"></i></a>
-                        </div>
-                        <div class="header-wishlist d-none d-sm-block">
-                            <a href="#offcanvas-wishlist" class="offcanvas-toggle"><span class="wishlist-count">3</span><i class="far fa-heart"></i></a>
-                        </div>
-                        <div class="header-cart">
-                            <a href="#offcanvas-cart" class="offcanvas-toggle"><span class="cart-count">3</span><i class="fas fa-shopping-cart"></i></a>
-                        </div>
-                        <div class="mobile-menu-toggle d-xl-none">
-                            <a href="#" class="offcanvas-toggle">
-                                <svg viewBox="0 0 800 600">
-                                    <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" class="top"></path>
-                                    <path d="M300,320 L540,320" class="middle"></path>
-                                    <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" class="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
-                                </svg>
+                        <div class="header-wishlist">
+                            <a href="#offcanvas-wishlist" class="offcanvas-toggle">
+                                <span class="wishlist-count">{{$wishlist->count()}}</span><i class="far fa-heart"></i>
                             </a>
                         </div>
+                        <div class="header-cart">
+                            <a href="#offcanvas-cart" class="offcanvas-toggle">
+                                <span class="cart-count">{{$cart->sum('quantity')}}</span><i class="fas fa-shopping-cart"></i>
+                            </a>
+                        </div>
+                        @else    
+                            <div class="header-login me-5">
+                                <a href="{{route('authen.login')}}"><i class="far fa-user"></i></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="{{route('authen.register')}}">Đăng kí</a></li>
+                                        <li><a href="{{route('authen.login')}}">Đăng nhập </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                        @endif
                     </div>
                 </div>
-                <!-- Header Tools End -->
 
             </div>
         </div>
@@ -794,7 +757,7 @@
                                     <strong>Danh mục:</strong> 
                                     <a href="product-details.html" class="title">{{ $wishlist->prodF->cat->name }}</a>
                                 </div>
-                                <a href="#" class="remove">×</a>
+                                <a href="{{ route('client.favorite', $wishlist->product_id) }}" class="remove">×</a>
                             </div>
                             
                         </li>
@@ -814,47 +777,37 @@
     <div id="offcanvas-cart" class="offcanvas offcanvas-cart">
         <div class="inner">
             <div class="head">
-                <span class="title">Cart</span>
+                <span class="title">Giỏ hàng của bạn </span>
                 <button class="offcanvas-close">×</button>
             </div>
             <div class="body customScroll">
                 <ul class="minicart-product-list">
-                    <li>
-                        <a href="product-details.html" class="image"><img src="assets/images/product/cart-product-1.webp" alt="Cart product Image"></a>
-                        <div class="content">
-                            <a href="product-details.html" class="title">Walnut Cutting Board</a>
-                            <span class="quantity-price">1 x <span class="amount">$100.00</span></span>
-                            <a href="#" class="remove">×</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="product-details.html" class="image"><img src="assets/images/product/cart-product-2.webp" alt="Cart product Image"></a>
-                        <div class="content">
-                            <a href="product-details.html" class="title">Lucky Wooden Elephant</a>
-                            <span class="quantity-price">1 x <span class="amount">$35.00</span></span>
-                            <a href="#" class="remove">×</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="product-details.html" class="image"><img src="assets/images/product/cart-product-3.webp" alt="Cart product Image"></a>
-                        <div class="content">
-                            <a href="product-details.html" class="title">Fish Cut Out Set</a>
-                            <span class="quantity-price">1 x <span class="amount">$9.00</span></span>
-                            <a href="#" class="remove">×</a>
-                        </div>
-                    </li>
+                    <?php $total = 0; ?>
+                    @foreach ($cart as $cart)
+                        <li>
+                            <a href="product-details.html" class="image"><img src="assets/images/product/{{$cart->prodC->image}}" alt="Cart product Image"></a>
+                            <div class="content">
+                                <a href="product-details.html" class="title">{{$cart->prodC->name}}</a>
+                                <span class="quantity-price"><b>{{$cart->quantity}}</b> x <span class="amount">{{number_format($cart->quantity * $cart->price)}} VND</span></span>
+                                <a href="{{route('client.delete_cart', $cart->id)}}" class="remove">×</a>
+                            </div>
+                        </li>
+                        <?php $total += $cart->quantity * $cart->price; ?>
+                    @endforeach
                 </ul>
             </div>
             <div class="foot">
                 <div class="sub-total">
-                    <strong>Subtotal :</strong>
-                    <span class="amount">$144.00</span>
+                    <p>Phí giao hàng mặc định</p>
+                    <span class="amount">+ 40,000 VND</span>
+                    <strong>Tổng đơn hàng hiện tại:</strong>
+                    <span class="amount">= {{number_format($total+40000)}} VND</span>
                 </div>
                 <div class="buttons">
-                    <a href="shopping-cart.html" class="btn btn-dark btn-hover-primary">view cart</a>
-                    <a href="checkout.html" class="btn btn-outline-dark">checkout</a>
+                    <a href="{{route('client.cart')}}" class="btn btn-dark btn-hover-primary">Danh sách giỏ hàng</a>
+                    <a href="{{route('client.checkout')}}" class="btn btn-outline-dark">Thanh Toán</a>
                 </div>
-                <p class="minicart-message">Free Shipping on All Orders Over $100!</p>
+                <p class="minicart-message" style="text-align: center">Miễn phí giao hàng cho các đơn hàng từ 999.999vnđ hoặc các đơn hàng xung quanh huyện phú xuyên</p>
             </div>
         </div>
     </div>

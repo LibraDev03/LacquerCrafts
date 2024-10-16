@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Authen\AuthController;
+use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\Client\CheckoutController;
 use App\Http\Controllers\Client\ClientController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +28,7 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => 'authen'], function() {
+
     Route::get('/register', [AuthController::class, 'register'])->name('authen.register');
     Route::post('/register',[AuthController::class, 'check_register']);
     
@@ -49,17 +52,23 @@ Route::group(['prefix' => 'authen'], function() {
 });
 
 Route::group(['prefix' =>'admin'], function() {
+
     Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
     Route::resources([
+
         'user' => UserController::class,
+
         'category'=> CategoryController::class,
+
         'product'=> ProductController::class,
+
         'blog' => BlogController::class
     ]);
 });
 
 Route::group(['prefix' => 'client'], function() {
+
     Route::get('/', [ClientController::class, 'home'])->name('client.home');
 
     Route::group(['prefix' => 'content'],function(){
@@ -67,10 +76,13 @@ Route::group(['prefix' => 'client'], function() {
     });
 
     Route::get('/about', [clientController::class, 'about'])->name('client.about');
+
     Route::get('/contact', [clientController::class, 'contact'])->name('client.contact');
     
     Route::group(['prefix' => 'shop'],function(){
+
         Route::get('/', [clientController::class, 'shop'])->name('client.shop');
+
         Route::get('/category/{cat}', [ClientController::class, 'category'])->name('client.category');
 
         Route::get('product/{product}', [ClientController::class, 'product'])->name('client.product');
@@ -80,7 +92,22 @@ Route::group(['prefix' => 'client'], function() {
 
     });
 
+    Route::group(['prefix' => 'cart'], function(){
+
+        Route::get('/', [CartController::class, 'cart'])->name('client.cart');
+        Route::get('/add/{product}', [CartController::class, 'add_cart'])->name('client.add_cart');
+        Route::get('/delete/{product}', [CartController::class, 'delete_cart'])->name('client.delete_cart');
+        Route::get('/update/{product}', [CartController::class, 'update_cart'])->name('client.update_cart');
+        Route::get('clear', [CartController::class, 'clear'])->name('client.clear');
+
+    });
+
     Route::get('/favorite/{product}', [clientController::class, 'favorite'])->name('client.favorite');
     Route::get('/wishlist', [ClientController::class, 'wishlist'])->name('client.wishlist');
+    Route::get('/clear_wishlish', [ClientController::class, 'clear_wishlish'])->name('client.clear_wishlish');
+
+    Route::group(['prefix' => 'order'], function() {
+        Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('client.checkout');
+    });
 
 });
