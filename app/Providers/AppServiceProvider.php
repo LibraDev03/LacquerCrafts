@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Favorite;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 

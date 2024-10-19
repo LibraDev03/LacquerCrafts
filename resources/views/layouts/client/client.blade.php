@@ -196,10 +196,10 @@
                     <div class="header-tools justify-content-end">
                         @if (Auth::check())
                         <div class="header-login">
-                            <a href="{{route('authen.profile')}}"><i class="far fa-user"></i></a>
+                            <a href="{{route('authem.myaccount')}}"><i class="far fa-user"></i></a>
                             <div class="dropdown-menu">
                                 <ul>
-                                    <li><a href="{{route('authen.profile')}}">Cá nhân</a></li>
+                                    <li><a href="{{route('authen.profile')}}">Hồ sơ cá nhân</a></li>
                                     <li><a href="{{route('authen.change_password')}}">Đổi mật khẩu</a></li>
                                     {{-- <li><a href="{{route('authen.register')}}">Đăng kí</a></li> --}}
                                     <li><a href="{{route('authen.logout')}}">Đăng xuất </a></li>
@@ -806,6 +806,7 @@
                 <div class="buttons">
                     <a href="{{route('client.cart')}}" class="btn btn-dark btn-hover-primary">Danh sách giỏ hàng</a>
                     <a href="{{route('client.checkout')}}" class="btn btn-outline-dark">Thanh Toán</a>
+                    <a href="{{route('client.history')}}" class="btn btn-outline-dark">Lịch sử đơn hàng</a>
                 </div>
                 <p class="minicart-message" style="text-align: center">Miễn phí giao hàng cho các đơn hàng từ 999.999vnđ hoặc các đơn hàng xung quanh huyện phú xuyên</p>
             </div>

@@ -49,6 +49,8 @@ Route::group(['prefix' => 'authen'], function() {
     Route::get('/reset_password',[AuthController::class, 'reset_password'])->name('authen.reset_password');
     Route::post('/reset_password',[AuthController::class, 'check_reset_password']);
 
+    Route::get('/myaccount', [AuthController::class , 'myaccount'])->name('authem.myaccount');
+
 });
 
 Route::group(['prefix' =>'admin'], function() {
@@ -108,6 +110,9 @@ Route::group(['prefix' => 'client'], function() {
 
     Route::group(['prefix' => 'order'], function() {
         Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('client.checkout');
+        Route::post('/checkout', [CheckoutController::class, 'post_checkout']);
+        Route::get('/history', [CheckoutController::class, 'history'])->name('client.history');
+        Route::get('/order_detail/{order}', [CheckoutController::class, 'order_detail'])->name('client.detail');
     });
 
 });

@@ -174,4 +174,9 @@ class AuthController extends Controller
 
     }
 
+    public function myaccount(){
+        $authen = auth()->user();
+        return view('authen.myaccount', compact('authen'));
+    }
+
 }
