@@ -28,7 +28,7 @@ class Order extends Model
         $t = 0;
 
         foreach($this->orderD as $order) {
-            $t += $order->price * $order->quantity + 40000;
+            $t += $order->price * $order->quantity;
         }
         return  $t;
     }

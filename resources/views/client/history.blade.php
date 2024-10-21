@@ -34,7 +34,7 @@
                 <tr>
                     <td class="w-25">{{$loop->index+1}}</td>
                     <td class="w-25">{{$order->created_at->format('d/m/Y')}}</td>
-                    <td class="w-25">{{number_format( $order->totalPrice) }}  VND</td>
+                    <td class="w-25">{{number_format( $order->totalPrice + 40000) }}  VND</td>
                     <td class="w-25"><a href="{{route('client.detail', $order->id)}}">Xem chi tiết tại đây</a></td>
                 </tr>
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Authen\AuthController;
@@ -66,7 +67,11 @@ Route::group(['prefix' =>'admin'], function() {
         'product'=> ProductController::class,
 
         'blog' => BlogController::class
+
     ]);
+
+    Route::get('/order', [OrderController::class, 'order'])->name('admin.order');
+    Route::get('/detail/{order}', [OrderController::class, 'detail'])->name('admin.detail');
 });
 
 Route::group(['prefix' => 'client'], function() {

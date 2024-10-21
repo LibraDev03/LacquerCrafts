@@ -25,7 +25,7 @@
             <div class="small-box bg-info">
                 <div class="inner">
                   <p style="text-align: center">Đơn hàng mới</p>
-                  <h3 style="text-align: center">20</h3>
+                  <h3 style="text-align: center">{{ $order->count()}}</h3>
                 </div>
                 <div class="icon">
                 <i class="ion ion-bag"></i>
