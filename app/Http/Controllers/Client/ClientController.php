@@ -21,6 +21,16 @@ class ClientController extends Controller
         return view('client.home', compact('all_product','new_product', 'sale_product','wishlist'));
     }
 
+    public function search() {
+        // dd(request()->key);
+        if ($key = request()->key) {
+            $data = Product::where('name', 'like', '%' . $key . '%')->orderBy('id', 'DESC')->get();
+        }
+        $all_product= Product::inRandomOrder()->get();
+        $new_product = Product::orderBy('id', 'DESC')->limit(3)->get();
+        return view('client.search', compact('data','all_product','new_product'));
+    }
+
     public function shop(){
         $all_product= Product::inRandomOrder()->get();
         $new_product = Product::orderBy('id', 'DESC')->limit(3)->get();

@@ -1,8 +1,7 @@
 @extends('layouts.client.client')
-@section('title' ,'LacquerCraft Home')
 @section('main')
-     <!-- Page Title/Header Start -->
-     <div class="page-title-section section" data-bg-image="{{asset('assets/images/bg/page-title-1.webp')}}">
+      <!-- Page Title/Header Start -->
+      <div class="page-title-section section" data-bg-image="{{asset('assets/images/bg/page-title-1.webp')}}">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -162,65 +161,95 @@
 
                     <div class="col-lg-9 col-12 learts-mb-50">
                         
-                        <!-- Products Start -->
-                        
-                        {{-- @if($data->isEmpty())
-                            <p>Không tìm thấy sản phẩm nào!</p>
-                        @else
-                            <div class="product-list">
-                                @foreach($data as $data)
-                                    <div class="product-item">
-                                        <h5>{{ $data->name }}</h5>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @endif --}}
-                        
                         <div id="shop-products" class="products isotope-grid row row-cols-xl-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
 
                             <div class="grid-sizer col-1"></div>
 
-                            @foreach ($all_product as $all_product)
-                            <div class="grid-item col featured">
-                                <div class="product">
-                                    <div class="product-thumb">
-                                        <a href="product-details.html" class="image">
-                                            <span class="product-badges">
-                                                <span class="onsale">-27%</span>
-                                            <span class="hot">hot</span>
-                                            </span>
-                                            <img src="{{asset('assets/images/product/' . $all_product->image)}}" alt="Product Image">
-                                            <img class="image-hover " src="{{asset('assets/images/product/s328/product-8-hover.webp')}}" alt="Product Image">
-                                        </a>
-                                        <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
-                                        <div class="product-options">
-                                            <ul class="colors">
-                                                <li style="background-color: #000000;">color one</li>
-                                                <li style="background-color: #c2c2c2;">color two</li>
-                                                <li style="background-color: #b2483c;">color three</li>
-                                            </ul>
-                                            <ul class="sizes">
-                                                <li>Large</li>
-                                                <li>Medium</li>
-                                                <li>Small</li>
-                                            </ul>
+                            @if ($data->isEmpty())
+                                @foreach ($all_product as $all_product)
+                                <div class="grid-item col featured">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <a href="product-details.html" class="image">
+                                                <span class="product-badges">
+                                                    <span class="onsale">-27%</span>
+                                                <span class="hot">hot</span>
+                                                </span>
+                                                <img src="{{asset('assets/images/product/' . $all_product->image)}}" alt="Product Image">
+                                                <img class="image-hover " src="{{asset('assets/images/product/s328/product-8-hover.webp')}}" alt="Product Image">
+                                            </a>
+                                            <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
+                                            <div class="product-options">
+                                                <ul class="colors">
+                                                    <li style="background-color: #000000;">color one</li>
+                                                    <li style="background-color: #c2c2c2;">color two</li>
+                                                    <li style="background-color: #b2483c;">color three</li>
+                                                </ul>
+                                                <ul class="sizes">
+                                                    <li>Large</li>
+                                                    <li>Medium</li>
+                                                    <li>Small</li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h6 class="title"><a href="product-details.html">{{$all_product->name}}</a></h6>
-                                        <span class="price">
-                                            <span class="old">{{number_format($all_product->price)}} VND</span>
-                                        <span class="new">{{number_format($all_product->discount)}} VND</span>
-                                        </span>
-                                        <div class="product-buttons">
-                                            <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top" data-hint="Quick View"><i class="fas fa-search"></i></a>
-                                            <a href="#" class="product-button hintT-top" data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
-                                            <a href="#" class="product-button hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
+                                        <div class="product-info">
+                                            <h6 class="title"><a href="product-details.html">{{$all_product->name}}</a></h6>
+                                            <span class="price">
+                                                <span class="old">{{number_format($all_product->price)}} VND</span>
+                                            <span class="new">{{number_format($all_product->discount)}} VND</span>
+                                            </span>
+                                            <div class="product-buttons">
+                                                <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top" data-hint="Quick View"><i class="fas fa-search"></i></a>
+                                                <a href="#" class="product-button hintT-top" data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
+                                                <a href="#" class="product-button hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            @endforeach
+                                @endforeach
+                            @else
+                                @foreach ($data as $data)
+                                <div class="grid-item col featured">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <a href="product-details.html" class="image">
+                                                <span class="product-badges">
+                                                    <span class="onsale">-27%</span>
+                                                <span class="hot">hot</span>
+                                                </span>
+                                                <img src="{{asset('assets/images/product/' . $data->image)}}" alt="Product Image">
+                                                <img class="image-hover " src="{{asset('assets/images/product/s328/product-8-hover.webp')}}" alt="Product Image">
+                                            </a>
+                                            <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
+                                            <div class="product-options">
+                                                <ul class="colors">
+                                                    <li style="background-color: #000000;">color one</li>
+                                                    <li style="background-color: #c2c2c2;">color two</li>
+                                                    <li style="background-color: #b2483c;">color three</li>
+                                                </ul>
+                                                <ul class="sizes">
+                                                    <li>Large</li>
+                                                    <li>Medium</li>
+                                                    <li>Small</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-info">
+                                            <h6 class="title"><a href="product-details.html">{{$data->name}}</a></h6>
+                                            <span class="price">
+                                                <span class="old">{{number_format($data->price)}} VND</span>
+                                            <span class="new">{{number_format($data->discount)}} VND</span>
+                                            </span>
+                                            <div class="product-buttons">
+                                                <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top" data-hint="Quick View"><i class="fas fa-search"></i></a>
+                                                <a href="#" class="product-button hintT-top" data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
+                                                <a href="#" class="product-button hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            @endif
 
                         </div>
                         <!-- Products End -->
@@ -233,14 +262,14 @@
                     <div class="col-lg-3 col-12 learts-mb-10">
 
                         <!-- Search Start -->
-                        <div class="single-widget learts-mb-40">
+                        {{-- <div class="single-widget learts-mb-40">
                             <div class="widget-search">
                                 <form action="#">
                                     <input type="text" placeholder="Tìm kiếm sản phẩm.......">
                                     <button><i class="fas fa-search"></i></button>
                                 </form>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- Search End -->
 
                         <!-- Categories Start -->

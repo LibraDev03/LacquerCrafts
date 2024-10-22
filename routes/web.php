@@ -12,6 +12,8 @@ use App\Http\Controllers\Client\CheckoutController;
 use App\Http\Controllers\Client\ClientController;
 use Illuminate\Support\Facades\Route;
 
+use function Laravel\Prompts\search;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,6 +79,8 @@ Route::group(['prefix' =>'admin'], function() {
 Route::group(['prefix' => 'client'], function() {
 
     Route::get('/', [ClientController::class, 'home'])->name('client.home');
+
+    Route::get('/search', [ClientController::class, 'search'])->name('client.search');
 
     Route::group(['prefix' => 'content'],function(){
     Route::get('/', [ClientController::class, 'content'])->name('client.blog');
