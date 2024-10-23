@@ -45,7 +45,7 @@
                                     <div class="desc">
                                         <p>{{$blog->description}}</p>
                                     </div>
-                                    <a href="blog-details-right-sidebar.html" class="link">Chi tiết bài viết</a>
+                                    <a href="{{route('client.blog_detail', $blog->id)}}" class="link">Chi tiết bài viết</a>
                                 </div>
                             </div>
                         </div>

@@ -45,25 +45,27 @@
                             <div class="myaccount-content order">
                                 <div class="table-responsive">
                                     <div class="" style="border: 1px solid; border-color: black; padding:50px">
-                                        <table class="table">
+                                        <table class="cart-wishlist-table table text-center">
                                             <thead>
                                                 <tr>
-                                                    <th>Order</th>
-                                                    <th>Date</th>
-                                                    <th>Status</th>
-                                                    <th>Total</th>
-                                                    <th>Action</th>
+                                                    <th class="w-25">STT</th>
+                                                    <th class="w-25">Ngày đặt hàng</th>
+                                                    <th class="w-25">Tổng đơn hàng</th>
+                                                    <th class="w-25">Chi tiết đơn hàng</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php $total = 0; ?>
+                                                @foreach ($orders as $order)
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>Aug 22, 2018</td>
-                                                    <td>Pending</td>
-                                                    <td>$3000</td>
-                                                    <td><a href="shopping-cart.html">View</a></td>
+                                                    <td class="w-25">{{$loop->index+1}}</td>
+                                                    <td class="w-25">{{$order->created_at->format('d/m/Y')}}</td>
+                                                    <td class="w-25">{{number_format( $order->totalPrice + 40000) }}  VND</td>
+                                                    <td class="w-25"><a href="{{route('client.detail', $order->id)}}">Xem chi tiết tại đây</a></td>
                                                 </tr>
-                                                
+                                
+                                                <?php?>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -77,28 +79,27 @@
                             <div class="myaccount-content download">
                                 <div class="" style="border: 1px solid; border-color: black; padding:50px">
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table class="cart-wishlist-table table text-center">
                                             <thead>
                                                 <tr>
-                                                    <th>Product</th>
-                                                    <th>Date</th>
-                                                    <th>Expire</th>
-                                                    <th>Download</th>
+                                                    <th class="w-25">STT</th>
+                                                    <th class="w-25">Ngày đặt hàng</th>
+                                                    <th class="w-25">Tổng đơn hàng</th>
+                                                    <th class="w-25">Chi tiết đơn hàng</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php $total = 0; ?>
+                                                @foreach ($orders as $order)
                                                 <tr>
-                                                    <td>Haven - Free Real Estate PSD Template</td>
-                                                    <td>Aug 22, 2018</td>
-                                                    <td>Yes</td>
-                                                    <td><a href="#"><i class="far fa-arrow-to-bottom mr-1"></i> Download File</a></td>
+                                                    <td class="w-25">{{$loop->index+1}}</td>
+                                                    <td class="w-25">{{$order->created_at->format('d/m/Y')}}</td>
+                                                    <td class="w-25">{{number_format( $order->totalPrice + 40000) }}  VND</td>
+                                                    <td class="w-25"><a href="{{route('client.detail', $order->id)}}">Xem chi tiết tại đây</a></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>HasTech - Profolio Business Template</td>
-                                                    <td>Sep 12, 2018</td>
-                                                    <td>Never</td>
-                                                    <td><a href="#"><i class="far fa-arrow-to-bottom mr-1"></i> Download File</a></td>
-                                                </tr>
+                                
+                                                <?php?>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

@@ -171,13 +171,14 @@
                             <div class="grid-item col featured">
                                 <div class="product">
                                     <div class="product-thumb">
-                                        <a href="product-details.html" class="image">
+                                        <a href="{{route('client.product', $products->id)}}" class="image">
                                             <span class="product-badges">
                                                 <span class="onsale">-27%</span>
                                             <span class="hot">hot</span>
                                             </span>
                                             <img src="{{asset('assets/images/product/' . $products->image)}}" alt="Product Image">
-                                            <img class="image-hover " src="{{asset('assets/images/product/s328/' )}}" alt="Product Image">
+                                            <img class="image-hover " src="assets/images/product/s328/product-8-hover.webp" alt="Product Image">
+
                                         </a>
                                         <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
                                         <div class="product-options">
@@ -196,12 +197,12 @@
                                     <div class="product-info">
                                         <h6 class="title"><a href="product-details.html">{{$products->name}}</a></h6>
                                         <span class="price">
-                                            <span class="old">{{$products->price}} VND</span>
-                                        <span class="new">{{$products->discount}} VND</span>
+                                            <span class="old">{{number_format( $products->price)}} VND</span>
+                                        <span class="new">{{ number_format( $products->discount)}} VND</span>
                                         </span>
                                         <div class="product-buttons">
                                             <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top" data-hint="Quick View"><i class="fas fa-search"></i></a>
-                                            <a href="#" class="product-button hintT-top" data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
+                                            <a href="{{route('client.add_cart', $products->id)}}" class="product-button hintT-top" data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
                                             <a href="#" class="product-button hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
                                         </div>
                                     </div>
@@ -257,7 +258,7 @@
                                 @foreach ($new_product as $new_product)
                                 <li class="product">
                                     <div class="thumbnail">
-                                        <a href="product-details.html"><img src="{{ asset('assets/images/product/' . $new_product->image) }}" alt="List product"></a>
+                                        <a href="{{route('client.product', $new_product->id)}}"><img src="{{ asset('assets/images/product/' . $new_product->image) }}" alt="List product"></a>
                                     </div>
                                     <div class="content">
                                         <h6 class="title"><a href="product-details.html">{{$new_product->name}}</a></h6>

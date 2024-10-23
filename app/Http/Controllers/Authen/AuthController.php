@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\change_password;
 use App\Mail\Profile;
 use App\Mail\VerifyAccount;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -176,7 +177,8 @@ class AuthController extends Controller
 
     public function myaccount(){
         $authen = auth()->user();
-        return view('authen.myaccount', compact('authen'));
+        $orders = Order::where('user_id', auth()->id())->get();
+        return view('authen.myaccount', compact('authen','orders'));
     }
 
 }

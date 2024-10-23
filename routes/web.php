@@ -79,11 +79,16 @@ Route::group(['prefix' =>'admin'], function() {
 Route::group(['prefix' => 'client'], function() {
 
     Route::get('/', [ClientController::class, 'home'])->name('client.home');
+    Route::get('/quickview/{product}', [ClientController::class, 'quickview'])->name('client.quickview');
 
     Route::get('/search', [ClientController::class, 'search'])->name('client.search');
 
     Route::group(['prefix' => 'content'],function(){
+
     Route::get('/', [ClientController::class, 'content'])->name('client.blog');
+
+    Route::get('/blog_detail/{blog}', [ClientController::class, 'blog_detail'])->name('client.blog_detail');
+
     });
 
     Route::get('/about', [clientController::class, 'about'])->name('client.about');

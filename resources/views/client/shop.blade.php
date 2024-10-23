@@ -184,13 +184,13 @@
                             <div class="grid-item col featured">
                                 <div class="product">
                                     <div class="product-thumb">
-                                        <a href="product-details.html" class="image">
+                                        <a href="{{route('client.product', $all_product->id)}}" class="image">
                                             <span class="product-badges">
                                                 <span class="onsale">-27%</span>
                                             <span class="hot">hot</span>
                                             </span>
                                             <img src="{{asset('assets/images/product/' . $all_product->image)}}" alt="Product Image">
-                                            <img class="image-hover " src="{{asset('assets/images/product/s328/product-8-hover.webp')}}" alt="Product Image">
+                                            {{-- <img class="image-hover " src="{{asset('assets/images/product/s328/product-8-hover.webp')}}" alt="Product Image"> --}}
                                         </a>
                                         <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
                                         <div class="product-options">

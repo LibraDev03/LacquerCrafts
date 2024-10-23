@@ -92,7 +92,7 @@
                                         <span class="hot">hot</span>
                                         </span>
                                         <img src="assets/images/product/{{$new_product->image}}" alt="Product Image">
-                                        <img class="image-hover " src="assets/images/product/s328/product-8-hover.webp" alt="Product Image">
+                                        {{-- <img class="image-hover " src="assets/images/product/s328/product-8-hover.webp" alt="Product Image"> --}}
                                     </a>
 
                                     @if ($new_product->favorited)
@@ -127,7 +127,7 @@
                                     <div class="product-buttons">
                                         <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top" data-hint="Quick View"><i class="fas fa-search"></i></a>
                                         <a href="{{route('client.add_cart', $new_product->id)}}" class="product-button hintT-top" data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
-                                        <a href="#" class="product-button hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
+                                        <a href="{{route('client.home')}}" class="product-button hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
                                     </div>
                                     <div class="product-stock-status">
                                         <div class="bar">
@@ -186,7 +186,7 @@
                 <div class="row">
                     <div class="col-12">
                         <ul class="product-tab-list nav">
-                            <li><a class="active" data-bs-toggle="tab" href="#tab-new-sale">Tất cả sản phẩm</a></li>
+                            <li><a class="active" data-bs-toggle="tab" href="#tab-new-sale ">Tất cả sản phẩm</a></li>
                             <li><a data-bs-toggle="tab" href="#tab-sale-items">Sản phẩm giảm giá</a></li>
                             {{-- <li><a data-bs-toggle="tab" href="#tab-best-sellers">Sản phẩm bán chạy</a></li> --}}
                         </ul>
@@ -204,7 +204,7 @@
                                                         <span class="hot">hot</span>
                                                     </span>
                                                     <img src="assets/images/product/{{$all_product->image}}" alt="Product Image">
-                                                    <img class="image-hover " src="assets/images/product/s328/product-8-hover.webp" alt="Product Image">
+                                                    {{-- <img class="image-hover " src="assets/images/product/s328/product-8-hover.webp" alt="Product Image"> --}}
                                                 </a>
                                                 
                                                 @if ($all_product->favorited)
@@ -238,7 +238,7 @@
                                                 <div class="product-buttons">
                                                     <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top" data-hint="Quick View"><i class="fas fa-search"></i></a>
                                                     <a href="{{route('client.add_cart', $all_product->id)}}" class="product-button hintT-top" data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
-                                                    <a href="#" class="product-button hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
+                                                    <a href="{{route('client.home')}}" class="product-button hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -263,7 +263,7 @@
                                                     <span class="hot">hot</span>
                                                     </span>
                                                     <img src="assets/images/product/{{$sale_product->image}}" alt="Product Image">
-                                                    <img class="image-hover " src="assets/images/product/s328/product-8-hover.webp" alt="Product Image">
+                                                    {{-- <img class="image-hover " src="assets/images/product/s328/product-8-hover.webp" alt="Product Image"> --}}
                                                 </a>
                                                 
                                                 @if ($sale_product->favorited)
@@ -298,7 +298,7 @@
                                                 <div class="product-buttons">
                                                     <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top" data-hint="Quick View"><i class="fas fa-search"></i></a>
                                                     <a href="{{route('client.add_cart', $sale_product->id)}}" class="product-button hintT-top" data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
-                                                    <a href="#" class="product-button hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
+                                                    <a href="{{route('client.home')}}" class="product-button hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
                                                 </div>
                                                 
                                             </div>
@@ -330,59 +330,199 @@
                 <!-- Section Title End -->
     
                <div class="section">
-            <div class="container">
-                <div class="row row-cols-lg-4 row-cols-sm-2 row-cols-1 learts-mb-n40">
-    
-                    <div class="col learts-mb-40">
-                        <div class="category-banner4">
-                            <a href="{{route('client.category' , ['cat' => 1])}}" class="inner">
-                                <div class="image"><img src="assets/images/banner/category/banner-s4-2.webp" alt=""></div>
-                                <div class="content" data-bg-color="#e8f5f2">
-                                    <h3 class="title">Đồ nội thất</h3>
-                                </div>
-                            </a>
+                <div class="container">
+                    <div class="row row-cols-lg-4 row-cols-sm-2 row-cols-1 learts-mb-n40">
+        
+                        <div class="col learts-mb-40">
+                            <div class="category-banner4">
+                                <a href="{{route('client.category' , ['cat' => 1])}}" class="inner">
+                                    <div class="image"><img src="assets/images/banner/category/banner-s4-2.webp" alt=""></div>
+                                    <div class="content" data-bg-color="#e8f5f2">
+                                        <h3 class="title">Đồ nội thất</h3>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-    
-                    <div class="col learts-mb-40">
-                        <div class="category-banner4">
-                            <a href="{{route('client.category' , ['cat' => 2])}}" class="inner">
-                                <div class="image"><img src="assets/images/banner/category/banner-s4-3.webp" alt=""></div>
-                                <div class="content" data-bg-color="#e3e4f5">
-                                    <h3 class="title">Đồ chơi</h3>
-                                </div>
-                            </a>
+        
+                        <div class="col learts-mb-40">
+                            <div class="category-banner4">
+                                <a href="{{route('client.category' , ['cat' => 2])}}" class="inner">
+                                    <div class="image"><img src="assets/images/banner/category/banner-s4-3.webp" alt=""></div>
+                                    <div class="content" data-bg-color="#e3e4f5">
+                                        <h3 class="title">Đồ chơi</h3>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col learts-mb-40">
-                        <div class="category-banner4">
-                            <a href="{{route('client.category' , ['cat' => 3])}}" class="inner">
-                                <div class="image"><img src="assets/images/banner/category/banner-s4-1.webp" alt=""></div>
-                                <div class="content" data-bg-color="#f4ede7">
-                                    <h3 class="title">Quà tặng</h3>
-                                </div>
-                            </a>
+                        <div class="col learts-mb-40">
+                            <div class="category-banner4">
+                                <a href="{{route('client.category' , ['cat' => 3])}}" class="inner">
+                                    <div class="image"><img src="assets/images/banner/category/banner-s4-1.webp" alt=""></div>
+                                    <div class="content" data-bg-color="#f4ede7">
+                                        <h3 class="title">Quà tặng</h3>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-    
-    
-                    <div class="col learts-mb-40">
-                        <div class="category-banner4">
-                            <a href="{{route('client.category' , ['cat' => 4])}}" class="inner">
-                                <div class="image"><img src="assets/images/banner/category/banner-s4-4.webp" alt=""></div>
-                                <div class="content" data-bg-color="#faf5e5">
-                                    <h3 class="title">Đồ trang trí</h3>
-                                </div>
-                            </a>
+        
+        
+                        <div class="col learts-mb-40">
+                            <div class="category-banner4">
+                                <a href="{{route('client.category' , ['cat' => 4])}}" class="inner">
+                                    <div class="image"><img src="assets/images/banner/category/banner-s4-4.webp" alt=""></div>
+                                    <div class="content" data-bg-color="#faf5e5">
+                                        <h3 class="title">Đồ trang trí</h3>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
+        
                     </div>
-    
                 </div>
-            </div>
-        </div>
     
             </div>
         </div>
         <!-- Instagram Section End -->
+        <!-- Modal -->
+        <div class="quickViewModal modal fade" id="quickViewModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <button class="close" data-bs-dismiss="modal">&times;</button>
+                    {{-- @foreach ($collection as $item) --}}
+                        <div class="row learts-mb-n30">
+
+                            <!-- Product Images Start -->
+                            <div class="col-lg-6 col-12 learts-mb-30">
+                                <div class="product-images">
+                                    <div class="product-gallery-slider-quickview">
+                                        <div class="product-zoom" data-image="{{asset('assets/images/product/single/1/product-zoom-1.webp')}}">
+                                            <img src="{{asset('assets/images/product/single/1/product-1.webp')}}" alt="">
+                                        </div>
+                                        {{-- <div class="product-zoom" data-image="{{asset('assets/images/product/single/1/product-zoom-2.webp')}}">
+                                            <img src="{{asset('assets/images/product/single/1/product-2.webp')}}" alt="">
+                                        </div>
+                                        <div class="product-zoom" data-image="{{asset('assets/images/product/single/1/product-zoom-3.webp')}}">
+                                            <img src="{{asset('assets/images/product/single/1/product-3.webp')}}" alt="">
+                                        </div>
+                                        <div class="product-zoom" data-image="{{asset('assets/images/product/single/1/product-zoom-4.webp')}}">
+                                            <img src="{{asset('assets/images/product/single/1/product-4.webp')}}" alt="">
+                                        </div> --}}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product Images End -->
+
+                            <!-- Product Summery Start -->
+                            <div class="col-lg-6 col-12 overflow-hidden position-relative learts-mb-30">
+                                <div class="product-summery customScroll">
+                                    <div class="product-ratings">
+                                        <span class="star-rating">
+                                        <span class="rating-active" style="width: 100%;">ratings</span>
+                                        </span>
+                                        <a href="#reviews" class="review-link">(<span class="count">3</span> customer reviews)</a>
+                                    </div>
+                                    <h3 class="product-title">Cleaning Dustpan & Brush</h3>
+                                    <div class="product-price">£38.00 – £50.00</div>
+                                    <div class="product-description">
+                                        <p>Easy clip-on handle – Hold the brush and dustpan together for storage; the dustpan edge is serrated to allow easy scraping off the hair without entanglement. High-quality bristles – no burr damage, no scratches, thick and durable, comfortable to remove dust and smaller particles.</p>
+                                    </div>
+                                    <div class="product-variations">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="label"><span>Size</span></td>
+                                                    <td class="value">
+                                                        <div class="product-sizes">
+                                                            <a href="#">Large</a>
+                                                            <a href="#">Medium</a>
+                                                            <a href="#">Small</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="label"><span>Color</span></td>
+                                                    <td class="value">
+                                                        <div class="product-colors">
+                                                            <a href="#" data-bg-color="#000000"></a>
+                                                            <a href="#" data-bg-color="#ffffff"></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="label"><span>Quantity</span></td>
+                                                    <td class="value">
+                                                        <div class="product-quantity">
+                                                            <span class="qty-btn minus"><i class="ti-minus"></i></span>
+                                                            <input type="text" class="input-qty" value="1">
+                                                            <span class="qty-btn plus"><i class="ti-plus"></i></span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="product-buttons">
+                                        <a href="#" class="btn btn-icon btn-outline-body btn-hover-dark"><i class="far fa-heart"></i></a>
+                                        <a href="#" class="btn btn-dark btn-outline-hover-dark"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                                        <a href="#" class="btn btn-icon btn-outline-body btn-hover-dark"><i class="fas fa-random"></i></a>
+                                    </div>
+                                    <div class="product-brands">
+                                        <span class="title">Brands</span>
+                                        <div class="brands">
+                                            <a href="#"><img src="assets/images/brands/brand-3.webp" alt=""></a>
+                                            <a href="#"><img src="assets/images/brands/brand-8.webp" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="product-meta mb-0">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="label"><span>SKU</span></td>
+                                                    <td class="value">0404019</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="label"><span>Category</span></td>
+                                                    <td class="value">
+                                                        <ul class="product-category">
+                                                            <li><a href="#">Kitchen</a></li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="label"><span>Tags</span></td>
+                                                    <td class="value">
+                                                        <ul class="product-tags">
+                                                            <li><a href="#">handmade</a></li>
+                                                            <li><a href="#">learts</a></li>
+                                                            <li><a href="#">mug</a></li>
+                                                            <li><a href="#">product</a></li>
+                                                            <li><a href="#">learts</a></li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="label"><span>Share on</span></td>
+                                                    <td class="va">
+                                                        <div class="product-share">
+                                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                            <a href="#"><i class="fab fa-twitter"></i></a>
+                                                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                                                            <a href="#"><i class="far fa-envelope"></i></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product Summery End -->
+
+                        </div>
+                    {{-- @endforeach --}}
+                </div>
+            </div>
+        </div>
 @endsection

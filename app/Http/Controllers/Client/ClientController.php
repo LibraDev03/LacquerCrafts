@@ -15,10 +15,14 @@ class ClientController extends Controller
 {
     public function home(){
         $wishlist = Favorite::where('user_id', auth()->id())->limit(3)->get();
-        $new_product = Product::orderBy('id', 'DESC')->limit(5)->get();
+        $new_product = Product::orderBy('id', 'DESC')->limit(4)->get();
         $all_product= Product::inRandomOrder()->limit(10)->get();
         $sale_product = Product::whereColumn('discount', '<', 'price')->get();
         return view('client.home', compact('all_product','new_product', 'sale_product','wishlist'));
+    }
+
+    public function quickview() {
+        return view('client.quickview');
     }
 
     public function search() {
@@ -40,6 +44,10 @@ class ClientController extends Controller
     public function content(){
         $blog = Blog::all();
         return view('client.blog', compact('blog'));
+    }
+
+    public function blog_detail() {
+        return view('client.blog_detail');
     }
 
     public function about(){

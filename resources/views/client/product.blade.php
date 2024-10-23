@@ -38,7 +38,7 @@
                             <a href="https://www.youtube.com/watch?v=1jSsy7DtYgc" class="product-video-popup video-popup hintT-left" data-hint="Click to see video"><i class="fas fa-play"></i></a>
                             <div class="product-zoom">
                                 <img src="assets/images/product/{{$product->image}}" alt="Product Image">
-                                <img class="image-hover " src="assets/images/product/s328/product-8-hover.webp" alt="Product Image">
+                                {{-- <img class="image-hover " src="assets/images/product/s328/product-8-hover.webp" alt="Product Image"> --}}
                             </div>
 
                             {{-- css hover cho san pham product --}}
@@ -172,7 +172,7 @@
                                         <i class="far fa-heart"></i> <!-- Trái tim rỗng -->
                                     </a>
                                 @endif
-                                <a href="#" class="btn btn-dark btn-outline-hover-dark"><i class="fas fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                                <a href="{{route('client.add_cart', $product->id)}}" class="btn btn-dark btn-outline-hover-dark"><i class="fas fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                                 <a href="#" class="btn btn-icon btn-outline-body btn-hover-dark hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
                             </div>
                             <div class="product-meta">
@@ -384,7 +384,7 @@
                                         <span class="hot">hot</span>
                                     </span>
                                     <img src="assets/images/product/{{$products->image}}" alt="Product Image">
-                                    <img class="image-hover " src="assets/images/product/s270/product-1-hover.webp" alt="Product Image">
+                                    {{-- <img class="image-hover " src="assets/images/product/s270/product-1-hover.webp" alt="Product Image"> --}}
                                 </a>
                                 <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
                                 <div class="product-options">
@@ -408,7 +408,7 @@
                                 </span>
                                 <div class="product-buttons">
                                     <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top" data-hint="Quick View"><i class="fas fa-search"></i></a>
-                                    <a href="#" class="product-button hintT-top" data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
+                                    <a href="{{route('client.add_cart', $products->id)}}" class="product-button hintT-top" data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
                                     <a href="#" class="product-button hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
                                 </div>
                             </div>
