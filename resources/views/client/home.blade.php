@@ -92,7 +92,9 @@
                                         <span class="hot">hot</span>
                                         </span>
                                         <img src="assets/images/product/{{$new_product->image}}" alt="Product Image">
-                                        {{-- <img class="image-hover " src="assets/images/product/s328/product-8-hover.webp" alt="Product Image"> --}}
+                                        @foreach($new_product->images as $image)
+                                            <img class="image-hover " src="assets/images/product/{{$image->image}}" alt="Product Image">
+                                        @endforeach
                                     </a>
 
                                     @if ($new_product->favorited)

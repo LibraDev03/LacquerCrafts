@@ -235,8 +235,8 @@
                         <!-- Search Start -->
                         <div class="single-widget learts-mb-40">
                             <div class="widget-search">
-                                <form action="#">
-                                    <input type="text" placeholder="Tìm kiếm sản phẩm.......">
+                                <form action="{{route('client.search')}}" method="GET">
+                                    <input name="key" type="text" placeholder="Tìm kiếm sản phẩm.....">
                                     <button><i class="fas fa-search"></i></button>
                                 </form>
                             </div>

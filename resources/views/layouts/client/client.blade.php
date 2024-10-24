@@ -181,14 +181,22 @@
                 <!-- Search End -->
 
                 <!-- Search Start -->
-                <div class="col-auto d-none d-xl-block ">
+                <div class="col-auto d-none d-xl-block " style="margin-right: 30px">
+                    <div class="widget-search">
+                        <form action="{{route('client.search')}}" method="GET">
+                            <input name="key" type="text" placeholder="Tìm kiếm sản phẩm.....">
+                            <button><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+                {{-- <div class="">
                     <div class="header2-search">
                         <form action="{{route('client.search')}}" method="GET">
                             <input name="key" type="text" placeholder="Tìm kiếm sản">
                             <button class="btn"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
-                </div>
+                </div> --}}
                 <!-- Search End -->
 
                 <!-- Header Tools Start -->

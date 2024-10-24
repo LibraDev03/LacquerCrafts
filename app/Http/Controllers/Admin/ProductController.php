@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -57,9 +58,24 @@ class ProductController extends Controller
 
         // dd($data);
 
-        Product::create($data);
+        if( $product =  Product::create($data)){
 
-        return redirect()->route('product.index')->with('suc', 'Thêm mới sản phẩm thành công');
+            if($request->has('other_image')){
+                foreach($request->other_image as $img) {
+                    $other_name = $img->hashName();
+                    $img->move(public_path('assets/images/product'), $other_name);
+                    ProductImage::create([
+                        'image' => $other_name,
+                        'product_id' => $product->id
+                    ]);
+                }
+            }
+
+            return redirect()->route('product.index')->with('suc', 'Thêm mới sản phẩm thành công');
+        }else{
+            return redirect()->route('product.index')->with('fail', 'Thêm mới sản phẩm thất bại');
+        }
+
 
    
 
@@ -89,6 +105,7 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {
         $product = Product::find($id);
+        $products = ProductImage::where('product_id', $product->id)->get();
         $data = $request->validate([
             'name' => 'nullable|unique:products,name',
             'slug'=> 'nullable',
@@ -121,6 +138,25 @@ class ProductController extends Controller
         }
 
         if($product->update($data)) {
+            if($request->has('other_image')){
+                foreach ($products as $images) {
+                    $imagePath = public_path('assets/images/product/' . $images->image);
+        
+                    if (file_exists($imagePath)) {
+                        unlink($imagePath); // Xóa ảnh khỏi thư mục
+                    }
+        
+                    $images->delete(); // Xóa bản ghi ảnh khỏi database
+                }
+                foreach($request->other_image as $img) {
+                    $other_name = $img->hashName();
+                    $img->move(public_path('assets/images/product'), $other_name);
+                    ProductImage::create([
+                        'image' => $other_name,
+                        'product_id' => $product->id
+                    ]);
+                }
+            }
             return redirect()->route('product.index')->with('suc', 'sửa sản phẩm thành công');
         }else{
             return redirect()->back()->with('fail', 'Sửa sản phẩm không thành công');
@@ -133,23 +169,32 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        // Tìm sản phẩm theo ID
-        $product = Product::findOrFail($id); // Sử dụng findOrFail để xử lý trường hợp không tìm thấy sản phẩm
-        
+ 
+        $product = Product::findOrFail($id);
+        $products = ProductImage::where('product_id', $product->id)->get();
         // Kiểm tra xem sản phẩm có ảnh không và xóa ảnh
+
+        foreach ($products as $images) {
+            $imagePath = public_path('assets/images/product/' . $images->image);
+
+            if (file_exists($imagePath)) {
+                unlink($imagePath); // Xóa ảnh khỏi thư mục
+            }
+
+            $images->delete(); // Xóa bản ghi ảnh khỏi database
+        }
+
         if ($product->image) {
-            $imagePath = public_path('assets/img/product/' . $product->image);
+            $imagePath = public_path('assets/images/product/' . $product->image);
             
             // Kiểm tra xem tệp tin có tồn tại trước khi xóa
             if (file_exists($imagePath)) {
                 unlink($imagePath); // Xóa ảnh khỏi thư mục
             }
         }
-
-        // Xóa sản phẩm khỏi cơ sở dữ liệu
+       
         $product->delete();
-
-        // Chuyển hướng về trang danh sách sản phẩm
+        
         return redirect()->route('product.index')->with('suc', 'Xóa sản phẩm thành công');
     }
 

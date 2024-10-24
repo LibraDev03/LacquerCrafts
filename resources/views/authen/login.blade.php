@@ -62,7 +62,7 @@
                                                         Nhớ thông tin của bạn
                                                     </label>
                                                 </div>
-                                                <a href="#" class="text-decoration-none">Bạn bị mất mật khẩu ?</a>
+                                                <a href="{{route('authen.forgot_password')}}" class="text-decoration-none">Bạn bị quên mật khẩu ?</a>
                                                 <a href="{{route('authen.register')}}" class="text-decoration-none">Trang đăng kí</a>
                                             </div>
                                             <br>

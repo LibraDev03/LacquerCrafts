@@ -71,6 +71,7 @@ Route::group(['prefix' =>'admin'], function() {
         'blog' => BlogController::class
 
     ]);
+    // Route::get('/destroyImage/{image}', [ProductController::class, 'destroyImage'])->name('admin.destroyImage');
 
     Route::get('/order', [OrderController::class, 'order'])->name('admin.order');
     Route::get('/detail/{order}', [OrderController::class, 'detail'])->name('admin.detail');

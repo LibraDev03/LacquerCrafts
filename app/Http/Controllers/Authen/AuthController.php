@@ -160,11 +160,16 @@ class AuthController extends Controller
     }
 
     public function forgot_password(){
-        
+        return view('authen.forgot');
     }
 
     public function check_forgot_password(){
+        request()->validate([
+            'email' => 'required|email|exists:users',
+        ]);
 
+        $user = User::where('email', request()->email)->first();
+    
     }
 
     public function reset_password(){

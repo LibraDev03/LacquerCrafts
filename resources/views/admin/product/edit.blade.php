@@ -23,6 +23,9 @@
                 <div class="form-group col-sm">
                     <input type="file" class="form-control" id="image" name="image" placeholder="Hình ảnh sản phẩm">
                 </div>
+                <div class="form-group col-sm">
+                    <input type="file" class="form-control" id="image" name="other_image[]" required placeholder="Hình ảnh liên quan sản phẩm" multiple>
+                </div>
             </div>
 
             <div class="row">

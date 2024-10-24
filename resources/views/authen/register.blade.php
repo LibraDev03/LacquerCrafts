@@ -129,7 +129,7 @@
                                     </div>
                                     
                                     <div class="d-flex justify-content-between">
-                                        <a href="#" class="text-decoration-none">Bạn bị mất mật khẩu ?</a>
+                                        <a href="{{route('authen.forgot_password')}}" class="text-decoration-none">Bạn bị quên mật khẩu ?</a>
                                         <a href="{{route('authen.login')}}" class="text-decoration-none">Trang đăng nhập</a>
                                     </div>
                                     <br>
