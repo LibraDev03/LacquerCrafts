@@ -169,7 +169,8 @@ class AuthController extends Controller
         ]);
 
         $user = User::where('email', request()->email)->first();
-    
+
+        // Mail::to($user->email)->send(new forgot_password($user));
     }
 
     public function reset_password(){

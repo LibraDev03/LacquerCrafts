@@ -62,16 +62,16 @@
                 <div class="col-auto d-none d-md-block">
                     <div class="topbar-menu d-flex flex-row-reverse">
                         <ul class="header-lan-curr">
-                            <li><a href="#">VIETNAM</a>
+                            <li><a href="{{route('client.home')}}">VIETNAM</a>
                                 <ul class="curr-lan-sub-menu">
-                                    <li><a href="#">Français</a></li>
-                                    <li><a href="#">ENGLISH</a></li>
+                                    <li><a href="{{route('client.home')}}">Français</a></li>
+                                    <li><a href="{{route('client.home')}}">ENGLISH</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">VND</a>
+                            <li><a href="{{route('client.home')}}">VND</a>
                                 <ul class="curr-lan-sub-menu">
-                                    <li><a href="#">CNY</a></li>
-                                    <li><a href="#">USD</a></li>
+                                    <li><a href="{{route('client.home')}}">CNY</a></li>
+                                    <li><a href="{{route('client.home')}}">USD</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -388,11 +388,11 @@
                 <!-- Search End -->
 
                 <!-- Search Start -->
-                <div class="col-auto d-none d-xl-block">
-                    <div class="header2-search">
-                        <form action="#">
-                            <input type="text" placeholder="Tìm kiếm sản phẩm">
-                            <button class="btn"><i class="fas fa-search"></i></button>
+                <div class="col-auto d-none d-xl-block " style="margin-right: 30px">
+                    <div class="widget-search">
+                        <form action="{{route('client.search')}}" method="GET">
+                            <input name="key" type="text" placeholder="Tìm kiếm sản phẩm.....">
+                            <button><i class="fas fa-search"></i></button>
                         </form>
                     </div>
                 </div>
@@ -403,10 +403,10 @@
                     <div class="header-tools justify-content-end">
                         @if (Auth::check())
                         <div class="header-login">
-                            <a href="{{route('authen.profile')}}"><i class="far fa-user"></i></a>
+                            <a href="{{route('authem.myaccount')}}"><i class="far fa-user"></i></a>
                             <div class="dropdown-menu">
                                 <ul>
-                                    <li><a href="{{route('authen.profile')}}">Cá nhân</a></li>
+                                    <li><a href="{{route('authen.profile')}}">Hồ sơ cá nhân</a></li>
                                     <li><a href="{{route('authen.change_password')}}">Đổi mật khẩu</a></li>
                                     {{-- <li><a href="{{route('authen.register')}}">Đăng kí</a></li> --}}
                                     <li><a href="{{route('authen.logout')}}">Đăng xuất </a></li>
@@ -437,7 +437,6 @@
                         @endif
                     </div>
                 </div>
-
             </div>
         </div>
 

@@ -9,6 +9,7 @@ use App\Models\Comment;
 use App\Models\Favorite;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Expr\Cast\String_;
 
 class ClientController extends Controller
@@ -73,18 +74,22 @@ class ClientController extends Controller
     }
 
     public function favorite(Product $product) {
-        $data  = [
-            'product_id' => $product->id,
-            'user_id' => auth()->user()->id
-        ];
-
-        $favorited = Favorite::where(['product_id'=> $product->id , 'user_id'=> auth()->user()->id  ])->first();
-        if($favorited){
-            $favorited->delete();
-            return redirect()->back()->with('suc', 'Đã bỏ phẩm yêu thích');   
+        if(Auth::check()){
+            $data  = [
+                'product_id' => $product->id,
+                'user_id' => auth()->user()->id
+            ];
+    
+            $favorited = Favorite::where(['product_id'=> $product->id , 'user_id'=> auth()->user()->id  ])->first();
+            if($favorited){
+                $favorited->delete();
+                return redirect()->back()->with('suc', 'Đã bỏ phẩm yêu thích');   
+            }else{
+                Favorite::create($data);
+                return redirect()->back()->with('suc', 'Đã thêm sản phẩm yêu thích');   
+            }
         }else{
-            Favorite::create($data);
-            return redirect()->back()->with('suc', 'Đã thêm sản phẩm yêu thích');   
+            return redirect()->back()->with('fail', 'Bạn phải đăng nhập để yêu thích sản phẩm');
         }
        
     }
@@ -99,16 +104,20 @@ class ClientController extends Controller
     }
 
     public function comment(Product $product) {
-        $data = request()->all('comment');
-        $data['product_id'] = $product->id;
-        $data['user_id'] = auth()->id();
-
-        // dd($data);
-
-        if($com = Comment::create($data)) {
-            return redirect()->back()->with('suc', 'Đã thêm đánh giá của bạn với sản phẩm');
+        if(Auth::check()){
+            $data = request()->all('comment');
+            $data['product_id'] = $product->id;
+            $data['user_id'] = auth()->id();
+    
+            // dd($data);
+    
+            if($com = Comment::create($data)) {
+                return redirect()->back()->with('suc', 'Đã thêm đánh giá của bạn với sản phẩm');
+            }else{
+                return redirect()->back()->with('fail', 'Thêm đánh giá thất bại');
+            }
         }else{
-            return redirect()->back()->with('fail', 'Thêm đánh giá thất bại');
+            return  redirect()->back()->with('fail','Bạn phải đăng nhập để có thể bình luận sản phẩm này');
         }
       
     }

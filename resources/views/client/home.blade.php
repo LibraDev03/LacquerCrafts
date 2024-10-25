@@ -13,7 +13,7 @@
                             <span class="sub-title">Dành cho bạn</span>
                             <h2 class="title">Những sản phẩm sơn mài<br>đặc biệt</h2>
                             <div class="link">
-                                <a href="shop.html">Mua ngay !</a>
+                                <a href="{{route('client.shop')}}">Mua ngay !</a>
                             </div>
                         </div>
                         <div class="home8-slide-pages">
@@ -30,7 +30,7 @@
                             <span class="sub-title">Chỉ riêng bạn</span>
                             <h2 class="title">Những thiết kế riêng biệt<br>hoàn hảo nhất</h2>
                             <div class="link">
-                                <a href="shop.html">Mua ngay !</a>
+                                <a href="{{route('client.shop')}}">Mua ngay !</a>
                             </div>
                         </div>
                         <div class="home8-slide-pages">
@@ -47,7 +47,7 @@
                             <span class="sub-title">Cho mình bạn</span>
                             <h2 class="title">Trải nghiệm mua sắm <br>hoàn toán mới</h2>
                             <div class="link">
-                                <a href="shop.html">Mua ngay !</a>
+                                <a href="{{route('client.shop')}}">Mua ngay !</a>
                             </div>
                         </div>
                         <div class="home8-slide-pages">
@@ -206,7 +206,9 @@
                                                         <span class="hot">hot</span>
                                                     </span>
                                                     <img src="assets/images/product/{{$all_product->image}}" alt="Product Image">
-                                                    {{-- <img class="image-hover " src="assets/images/product/s328/product-8-hover.webp" alt="Product Image"> --}}
+                                                    @foreach($all_product->images as $image)
+                                                        <img class="image-hover " src="assets/images/product/{{$image->image}}" alt="Product Image">
+                                                    @endforeach
                                                 </a>
                                                 
                                                 @if ($all_product->favorited)
@@ -265,7 +267,9 @@
                                                     <span class="hot">hot</span>
                                                     </span>
                                                     <img src="assets/images/product/{{$sale_product->image}}" alt="Product Image">
-                                                    {{-- <img class="image-hover " src="assets/images/product/s328/product-8-hover.webp" alt="Product Image"> --}}
+                                                    @foreach($all_product->images as $image)
+                                                        <img class="image-hover " src="assets/images/product/{{$image->image}}" alt="Product Image">
+                                                    @endforeach
                                                 </a>
                                                 
                                                 @if ($sale_product->favorited)

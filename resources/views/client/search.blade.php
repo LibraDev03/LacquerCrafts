@@ -176,7 +176,9 @@
                                                 <span class="hot">hot</span>
                                                 </span>
                                                 <img src="{{asset('assets/images/product/' . $all_product->image)}}" alt="Product Image">
-                                                <img class="image-hover " src="{{asset('assets/images/product/s328/product-8-hover.webp')}}" alt="Product Image">
+                                                @foreach($all_product->images as $image)
+                                                    <img class="image-hover " src="assets/images/product/{{$image->image}}" alt="Product Image">
+                                                @endforeach
                                             </a>
                                             <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
                                             <div class="product-options">
@@ -218,7 +220,9 @@
                                                 <span class="hot">hot</span>
                                                 </span>
                                                 <img src="{{asset('assets/images/product/' . $data->image)}}" alt="Product Image">
-                                                <img class="image-hover " src="{{asset('assets/images/product/s328/product-8-hover.webp')}}" alt="Product Image">
+                                                @foreach($data->images as $image)
+                                                    <img class="image-hover " src="assets/images/product/{{$image->image}}" alt="Product Image">
+                                                @endforeach
                                             </a>
                                             <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
                                             <div class="product-options">

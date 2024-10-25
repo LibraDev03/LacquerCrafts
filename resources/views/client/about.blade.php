@@ -192,23 +192,23 @@
                     <div class="col learts-mb-50">
     
                         <div class="instafeed instafeed-carousel instafeed-carousel2">
-                            <a class="instafeed-item" href="#">
+                            <a class="instafeed-item" href="https://www.instagram.com/h_son_ng/">
                                 <img src="{{asset('assets/images/instagram/instagram-1.webp')}}" alt="instagram image" />
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a class="instafeed-item" href="#">
+                            <a class="instafeed-item" href="https://www.instagram.com/h_son_ng/">
                                 <img src="{{asset('assets/images/instagram/instagram-2.webp')}}" alt="instagram image" />
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a class="instafeed-item" href="#">
+                            <a class="instafeed-item" href="https://www.instagram.com/h_son_ng/">
                                 <img src="{{asset('assets/images/instagram/instagram-3.webp')}}" alt="instagram image" />
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a class="instafeed-item" href="#">
+                            <a class="instafeed-item" href="https://www.instagram.com/h_son_ng/">
                                 <img src="{{asset('assets/images/instagram/instagram-4.webp')}}" alt="instagram image" />
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a class="instafeed-item" href="#">
+                            <a class="instafeed-item" href="https://www.instagram.com/h_son_ng/">
                                 <img src="{{asset('assets/images/instagram/instagram-4.webp')}}" alt="instagram image" />
                                 <i class="fab fa-instagram"></i>
                             </a>

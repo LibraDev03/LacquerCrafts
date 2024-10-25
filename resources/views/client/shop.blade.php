@@ -190,9 +190,21 @@
                                             <span class="hot">hot</span>
                                             </span>
                                             <img src="{{asset('assets/images/product/' . $all_product->image)}}" alt="Product Image">
-                                            {{-- <img class="image-hover " src="{{asset('assets/images/product/s328/product-8-hover.webp')}}" alt="Product Image"> --}}
+                                            @foreach($all_product->images as $image)
+                                                <img class="image-hover " src="assets/images/product/{{$image->image}}" alt="Product Image">
+                                            @endforeach
                                         </a>
-                                        <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
+
+                                        @if ($all_product->favorited)
+                                            <a href="{{ route('client.favorite', $all_product->id) }}" class="add-to-wishlist hintT-left wishlist-added" data-hint="Remove from wishlist">
+                                                <i class="fas fa-heart"></i>
+                                            </a>
+                                        @else
+                                            <a href="{{ route('client.favorite', $all_product->id) }}" class="add-to-wishlist hintT-left" data-hint="Add to wishlist">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+                                        @endif
+
                                         <div class="product-options">
                                             <ul class="colors">
                                                 <li style="background-color: #000000;">color one</li>
@@ -214,8 +226,8 @@
                                         </span>
                                         <div class="product-buttons">
                                             <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top" data-hint="Quick View"><i class="fas fa-search"></i></a>
-                                            <a href="#" class="product-button hintT-top" data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
-                                            <a href="#" class="product-button hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
+                                            <a href="{{route('client.add_cart', $all_product->id)}}" class="product-button hintT-top" data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
+                                            <a href="{{route('client.home')}}" class="product-button hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -225,9 +237,9 @@
                         </div>
                         <!-- Products End -->
 
-                        <div class="text-center learts-mt-70">
+                        {{-- <div class="text-center learts-mt-70">
                             <a href="#" class="btn btn-dark btn-outline-hover-dark"><i class="ti-plus"></i>Nhiều hơn</a>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <div class="col-lg-3 col-12 learts-mb-10">

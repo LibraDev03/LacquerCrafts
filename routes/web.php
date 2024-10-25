@@ -10,6 +10,7 @@ use App\Http\Controllers\Authen\AuthController;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\CheckoutController;
 use App\Http\Controllers\Client\ClientController;
+use App\Http\Controllers\Client\PaymentsController;
 use Illuminate\Support\Facades\Route;
 
 use function Laravel\Prompts\search;
@@ -128,6 +129,10 @@ Route::group(['prefix' => 'client'], function() {
         Route::post('/checkout', [CheckoutController::class, 'post_checkout']);
         Route::get('/history', [CheckoutController::class, 'history'])->name('client.history');
         Route::get('/order_detail/{order}', [CheckoutController::class, 'order_detail'])->name('client.detail');
+    });
+
+    Route::group(['prefix' => 'payments'], function() {
+        Route::post('/vnpay_payments', [PaymentsController::class, 'vnpay_payments'])->name('vnpay_payments');
     });
 
 });
