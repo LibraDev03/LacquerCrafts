@@ -80,10 +80,10 @@
                     <!-- Product Summery Start -->
                     <div class="col-lg-6 col-12 learts-mb-40">
                         <div class="product-summery">
-                            <div class="product-nav">
+                            {{-- <div class="product-nav">
                                 <a href="#"><i class="fas fa-long-arrow-alt-left"></i></a>
                                 <a href="#"><i class="fas fa-long-arrow-alt-right"></i></a>
-                            </div>
+                            </div> --}}
                             <div class="product-ratings">
                                 <span class="star-rating">
                                     <span class="rating-active" style="width: 100%;">ratings</span>

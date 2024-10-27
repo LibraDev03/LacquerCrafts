@@ -282,7 +282,7 @@
                                 @foreach ($new_product as $new_product)
                                 <li class="product">
                                     <div class="thumbnail">
-                                        <a href="product-details.html"><img src="{{ asset('assets/images/product/' . $new_product->image) }}" alt="List product"></a>
+                                        <a href="{{ route('client.product', $new_product->id)}}"><img src="{{ asset('assets/images/product/' . $new_product->image) }}" alt="List product"></a>
                                     </div>
                                     <div class="content">
                                         <h6 class="title"><a href="product-details.html">{{$new_product->name}}</a></h6>

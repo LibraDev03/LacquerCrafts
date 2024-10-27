@@ -4,15 +4,18 @@ namespace App\Http\Controllers\Authen;
 
 use App\Http\Controllers\Controller;
 use App\Mail\change_password;
+use App\Mail\Forgotpassword;
 use App\Mail\Profile;
 use App\Mail\VerifyAccount;
 use App\Models\Order;
+use App\Models\PasswordResetTokens;
+use App\Models\ResetPassword;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use PhpParser\Node\Expr\Cast\String_;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -170,14 +173,57 @@ class AuthController extends Controller
 
         $user = User::where('email', request()->email)->first();
 
-        // Mail::to($user->email)->send(new forgot_password($user));
+        $token = Str::random(30);
+
+        $tokendata = [
+            'email' => request()->email,
+            'token' => $token
+        ];
+        
+        // dd($tokendata);
+
+        if(ResetPassword::create($tokendata)){
+            Mail::to(request()->email)->send(new Forgotpassword($user, $token));
+            return redirect()->route('authen.login')->with('suc','Kiểm tra email cá nhân của bạn');
+        }
+        
+        return redirect()->back()->with('fail','Kiểm tra lại email hiện tại của bạn');
+
     }
 
-    public function reset_password(){
+    public function reset_password($token){
 
+        $tokendata = ResetPassword::where('token' , $token)->firstOrFail();
+        // $user = User::where('email', $tokendata->email)->firstOrFail(); // cách 1 truy vấn trực tiếp
+        // $user = $tokendata->userR; //cách 2 dùng model hasone
+
+        // dd($tokendata);
+        return view('authen.reset_password');
     }
     
-    public function check_reset_password(){
+    public function check_reset_password($token){
+        request()->validate([
+            'password' => 'required',
+            'confirm_password' => 'required|same:password'
+        ]);
+
+        $data['password'] = bcrypt(request('password')); 
+
+        $tokendata = ResetPassword::where('token' , $token)->firstOrFail();
+        // $user = User::where('email', $tokendata->email)->firstOrFail(); // cách 1 truy vấn trực tiếp
+        $user = $tokendata->userR; //cách 2 dùng model hasone
+
+        // dd($data);
+
+        $check = $user->update($data);
+
+        // dd($check);
+
+        if($check){
+            return redirect()->route('authen.login')->with('suc','Đặt lại mật khẩu thành công');
+        }else{
+            return redirect()->back()->with('fail','Đặt lại mật khẩu thất bại');
+        }
 
     }
 

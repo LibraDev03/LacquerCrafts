@@ -189,39 +189,55 @@
                                             <div class="col-md-6">
                                                 <div class="card">
                                                     <div class="card-header d-flex align-items-center">
-                                                        <input type="radio" name="payment_method" id="cashkPaymentsRadio" class="me-2" 
-                                                               data-bs-toggle="collapse" data-bs-target="#cashkPayments" />
-                                                        <label for="cashkPaymentsRadio" class="mb-0">
+                                                        <input type="radio" name="payment_method" id="cashPaymentsRadio" class="me-2" 
+                                                               data-bs-toggle="collapse" data-bs-target="#cashPayments" />
+                                                        <label for="cashPaymentsRadio" class="mb-0">
                                                             Cash on delivery (COD)
                                                         </label>
                                                     </div>
-                                                    <div id="cashkPayments" class="collapse" data-bs-parent="#paymentMethod">
+                                                    <div id="cashPayments" class="collapse" data-bs-parent="#paymentMethod">
                                                         <div class="card-body">
                                                             <p>Thanh toán tiền mặt khi nhận hàng (Chuẩn bị trước số tiền thanh toán)</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                    
+                                        
                                             <div class="col-md-6">
                                                 <div class="card">
-                                                    <div class="card-header d-flex align-items-center">
-                                                        <input type="radio" name="payment_method" id="payPalPaymentsRadio" class="me-2" 
-                                                               data-bs-toggle="collapse" data-bs-target="#payPalPayments" />
-                                                        <label for="payPalPaymentsRadio" class="mb-0">
-                                                            PayPal 
-                                                            <img src="assets/images/others/pay-2.webp" alt="" 
-                                                                 style="max-height: 20px; margin-left: 5px;">
-                                                        </label>
-                                                    </div>
-                                                    <div id="payPalPayments" class="collapse" data-bs-parent="#paymentMethod">
-                                                        <div class="card-body">
-                                                            <p>Thanh toán bằng các cổng thanh toán online hoặc ví điện tử</p>
+                                                    <form action="{{ route('vnpay_payments') }}" method="POST" id="paypalForm">
+                                                        @csrf
+                                                        <input type="hidden" name="total" value="{{$total}}">
+                                        
+                                                        <div class="card-header d-flex align-items-center">
+                                                            <input type="radio" name="payment_method" id="payPalPaymentsRadio" class="me-2"
+                                                                   data-bs-toggle="collapse" data-bs-target="#payPalPayments" />
+                                                            <label for="payPalPaymentsRadio" class="mb-0">
+                                                                PayPal 
+                                                                <img src="assets/images/others/pay-2.webp" alt=""
+                                                                     style="max-height: 20px; margin-left: 5px;">
+                                                            </label>
                                                         </div>
-                                                    </div>
+                                                        <div id="payPalPayments" class="collapse" data-bs-parent="#paymentMethod">
+                                                            <div class="card-body">
+                                                                <p>Thanh toán bằng các cổng thanh toán online hoặc ví điện tử</p>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
+                                        
+                                        <script>
+                                            // Bắt sự kiện khi chọn radio button của PayPal
+                                            document.getElementById('payPalPaymentsRadio').addEventListener('change', function () {
+                                                if (this.checked) {
+                                                    // Submit form khi radio được chọn
+                                                    document.getElementById('paypalForm').submit();
+                                                }
+                                            });
+                                        </script>
+                                        
                                     </div>
                                 </div>
                             </div>

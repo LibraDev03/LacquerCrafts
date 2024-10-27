@@ -8,10 +8,10 @@
                     <div class="col">
     
                         <div class="page-title">
-                            <h1 class="title">Đăng nhập</h1>
+                            <h1 class="title">Đặt lại mật khẩu</h1>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                                <li class="breadcrumb-item active">Đăng nhập</li>
+                                <li class="breadcrumb-item active">Đặt lại mật khẩu</li>
                             </ul>
                         </div>
     
@@ -28,8 +28,8 @@
                     <div class="col-lg-12">
                         <div class="user-login-register">
                             <div class="login-register-title">
-                                <h2 class="title">Đăng nhập</h2>
-                                <p class="desc">Thật tuyệt vời khi có bạn ở đây!</p>
+                                <h2 class="title">Đặt lại mật khẩu</h2>
+                                <p class="desc">Đặt lại mật khẩu của bạn tại đây <3</p>
                             </div>
                             <div class="login-register-form">
                                 <form action="" method="POST">
@@ -40,17 +40,24 @@
                                     </div>
                                     @endif --}}
                                     <div class="row learts-mb-n50">
-                                        <div class="col-12 learts-mb-20">
+                                        {{-- <div class="col-12 learts-mb-20">
                                             <label for="registerEmail">Địa chỉ Email của bạn<abbr class="required">*</abbr></label>
                                             <input type="email" id="registerEmail" name="email">
                                             @error('email')
                                                 <small style="color: red;" >{{ $message }}</small>
                                             @enderror
-                                        </div>
+                                        </div> --}}
                                         <div class="col-12 learts-mb-20">
-                                            <label for="password">Mật khẩu của bạn<abbr class="required">*</abbr></label>
+                                            <label for="password">Mật khẩu mới<abbr class="required">*</abbr></label>
                                             <input type="password" id="password" name="password">
                                             @error('password')
+                                                <small style="color: red;" >{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div class="col-12 learts-mb-20">
+                                            <label for="confirm_password">Xác nhận lại mật khẩu mới<abbr class="required">*</abbr></label>
+                                            <input type="password" id="confirm_password" name="confirm_password">
+                                            @error('confirm_password')
                                                 <small style="color: red;" >{{ $message }}</small>
                                             @enderror
                                         </div>
@@ -62,7 +69,7 @@
                                                         Nhớ thông tin của bạn
                                                     </label>
                                                 </div>
-                                                <a href="{{route('authen.forgot_password')}}" class="text-decoration-none">Bạn bị quên mật khẩu ?</a>
+                                                <a href="{{route('authen.login')}}" class="text-decoration-none">Trang đăng nhập</a>
                                                 <a href="{{route('authen.register')}}" class="text-decoration-none">Trang đăng kí</a>
                                             </div>
                                             <br>
@@ -72,7 +79,7 @@
                                         </div>
                                         
                                         <div class="col-12 text-center learts-mb-50">
-                                            <button class="btn btn-dark btn-outline-hover-dark">Đăng nhập</button>
+                                            <button class="btn btn-dark btn-outline-hover-dark">Đặt lại mật khẩu</button>
                                         </div>
                                     </div>
                                 </form>
