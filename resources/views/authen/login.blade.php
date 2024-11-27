@@ -56,14 +56,14 @@
                                         </div>
                                         <div class="col-12 text-center learts-mb-50">
                                             <div class="d-flex justify-content-between">
-                                                <div class="form-check">
+                                                {{-- <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="rememberMe">
                                                     <label class="form-check-label" for="rememberMe">
                                                         Nhớ thông tin của bạn
                                                     </label>
-                                                </div>
+                                                </div> --}}
                                                 <a href="{{route('authen.forgot_password')}}" class="text-decoration-none">Bạn bị quên mật khẩu ?</a>
-                                                <a href="{{route('authen.register')}}" class="text-decoration-none">Trang đăng kí</a>
+                                                <a href="{{route('authen.register')}}" class="text-decoration-none">Đăng kí</a>
                                             </div>
                                             <br>
                                             <br>

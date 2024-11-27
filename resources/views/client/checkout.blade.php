@@ -149,31 +149,7 @@
                         <label for="bdAdress">Địa chỉ nhận hàng <abbr class="required">*</abbr></label>
                         <input name="address" type="text" id="bdAdress" >
                     </div>
-                        {{-- <div class="col-md-4 col-12 learts-mb-20">
-                            <label for="bdCountry">Địa chỉ nhận hàng <abbr class="required">*</abbr></label>
-                            <select id="bdCountry" class="form-control select2-basic">
-                                <option value="">Chọn tỉnh/thành phố…</option>
-                                <option value="HNI">Hà Nội</option>
-                                <option value="HCM">TP. Hồ Chí Minh</option>
-                                <option value="DNA">Đà Nẵng</option>
-                                <option value="HUE">Thừa Thiên Huế</option>
-                                <option value="HPG">Hải Phòng</option>
-                                <option value="BDG">Bình Dương</option>
-                                <option value="DNA">Đồng Nai</option>
-                                <option value="QNI">Quảng Ninh</option>
-                                <option value="CTO">Cần Thơ</option>
-                                <option value="LCA">Lào Cai</option>
-                                <option value="LCU">Lai Châu</option>
-                                <option value="KGG">Kiên Giang</option>
-                                <option value="GLI">Gia Lai</option>
-                                <option value="NTN">Ninh Thuận</option>
-                                <option value="BTH">Bình Thuận</option>
-                                <option value="QNM">Quảng Nam</option>
-                                <option value="KHO">Khánh Hòa</option>
-                            </select>
-                        </div> --}}
                         
-                    
                     <div class="col-12 learts-mb-20">
                         <label for="bdOrderNote">Ghi chú cho đơn hàng của bạn </label>
                         <textarea name="order_notes" id="bdOrderNote" placeholder="Ghi chú của bạn về đơn hàng , người bán và người giao hàng có thể xem"></textarea>
@@ -205,7 +181,7 @@
                                         
                                             <div class="col-md-6">
                                                 <div class="card">
-                                                    <form action="{{ route('vnpay_payments') }}" method="POST" id="paypalForm">
+                                                    <form action="{{ route('client.vnpay_payments') }}" method="POST" id="paypalForm">
                                                         @csrf
                                                         <input type="hidden" name="total" value="{{$total}}">
                                         
@@ -254,6 +230,21 @@
                     </div>
                 </div>
             </form>
+            <form action="{{route('client.vnpay_payments')}}" method="POST" class="form-center">
+                @csrf
+                <button type="submit" class="btn btn-dark btn-outline-hover-dark">Thanh toán VNPAY</button>
+            </form>
+
+            <style>.container {
+                position: relative;
+            }
+            
+            .form-center {
+                position: absolute;
+                left: 49%;
+                transform: translateX(-50%);
+            }
+            </style>
         </div>
     </div>
     <!-- Checkout Section End -->

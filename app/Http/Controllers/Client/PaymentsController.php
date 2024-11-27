@@ -7,18 +7,17 @@ use Illuminate\Http\Request;
 
 class PaymentsController extends Controller
 {
-        public function vnpay_payments(Request $request){
-            $data =$request->all();
-            $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-            $vnp_Returnurl = "http://127.0.0.1:8000/client";
+        public function vnpay_payments(){
+            // $data =$request->all();
+            $vnp_Url = "http://127.0.0.1:8000/client";
+            $vnp_Returnurl = "https://localhost/vnpay_php/vnpay_return.php";
             $vnp_TmnCode = "8ZRMX27G";//Mã website tại VNPAY 
-            $vnp_HashSecret = "QBKLEHGHGTHKZX8I3LTYBTJMS8FIM0SG"; //Chuỗi bí mật
+            $vnp_HashSecret = "T6201W9XO2O4GWJUC1KWB5XR2RAFGYUS"; //Chuỗi bí mật
             
-            //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
-            $vnp_TxnRef = mt_rand(10000000, 99999999); // Số ngẫu nhiên 8 chữ số
-            $vnp_OrderInfo = "Thanh toan hoa don";
-            $vnp_OrderType = "LacquerCraft";
-            $vnp_Amount = $data['total'] * 100 * 25;
+            $vnp_TxnRef = mt_rand(10000000, 99999999); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+            $vnp_OrderInfo = 'Thanh toán hóa đơn';
+            $vnp_OrderType = 'LacquerCraft';
+            $vnp_Amount = 1 * 100;
             $vnp_Locale = "VN";
             $vnp_BankCode = "NCB";
             $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
@@ -34,7 +33,7 @@ class PaymentsController extends Controller
                 "vnp_OrderInfo" => $vnp_OrderInfo,
                 "vnp_OrderType" => $vnp_OrderType,
                 "vnp_ReturnUrl" => $vnp_Returnurl,
-                "vnp_TxnRef" => $vnp_TxnRef
+                "vnp_TxnRef" => $vnp_TxnRef,
             );
             
             if (isset($vnp_BankCode) && $vnp_BankCode != "") {
@@ -73,5 +72,6 @@ class PaymentsController extends Controller
                 } else {
                     echo json_encode($returnData);
                 }
+                // vui lòng tham khảo thêm tại code demo
         }
 }

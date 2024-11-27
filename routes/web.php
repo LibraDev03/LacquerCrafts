@@ -53,7 +53,7 @@ Route::group(['prefix' => 'authen'], function() {
     Route::get('/reset_password/{token}',[AuthController::class, 'reset_password'])->name('authen.reset_password');
     Route::post('/reset_password/{token}',[AuthController::class, 'check_reset_password']);
 
-    Route::get('/myaccount', [AuthController::class , 'myaccount'])->name('authem.myaccount');
+    Route::get('/myaccount', [AuthController::class , 'myaccount'])->name('authen.myaccount');
 
 });
 
@@ -132,7 +132,7 @@ Route::group(['prefix' => 'client'], function() {
     });
 
     Route::group(['prefix' => 'payments'], function() {
-        Route::post('/vnpay_payments', [PaymentsController::class, 'vnpay_payments'])->name('vnpay_payments');
+        Route::post('/vnpay_payments', [PaymentsController::class, 'vnpay_payments'])->name('client.vnpay_payments');
     });
 
 });

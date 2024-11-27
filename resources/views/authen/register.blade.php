@@ -56,7 +56,7 @@
                                             @enderror
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="confirm_password">Xác nhận lại mật khẩu của bạn<abbr class="required">*</abbr></label>
+                                            <label for="confirm_password">Xác nhận mật khẩu <abbr class="required">*</abbr></label>
                                             <input type="password" id="confirm_password" name="confirm_password" class="form-control shadow-none" required>
                                             @error('confirm_password')
                                                 <small style="color: red;">{{ $message }}</small>
@@ -129,8 +129,8 @@
                                     </div>
                                     
                                     <div class="d-flex justify-content-between">
-                                        <a href="{{route('authen.forgot_password')}}" class="text-decoration-none">Bạn bị quên mật khẩu ?</a>
-                                        <a href="{{route('authen.login')}}" class="text-decoration-none">Trang đăng nhập</a>
+                                        <a href="{{route('authen.forgot_password')}}" class="text-decoration-none">Bạn quên mật khẩu ?</a>
+                                        <a href="{{route('authen.login')}}" class="text-decoration-none">Đăng nhập</a>
                                     </div>
                                     <br>
                                     <br>
